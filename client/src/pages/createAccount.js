@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AccountForm from '../components/accountform';
 
 class CreateAccount extends Component {
   state = {}
@@ -6,7 +7,9 @@ class CreateAccount extends Component {
   render() {
 
     return (
-      <div className="create-account">
+      <div>
+        <h1 className="text-center">RoomHate</h1>
+        <AccountForm/>
       </div>
     );
   }

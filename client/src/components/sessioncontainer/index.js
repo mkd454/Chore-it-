@@ -5,15 +5,15 @@ class SessionContainer extends Component {
   state = {
     sessions: [
       {
-        id: 0,
+        id: 1,
         name: 'Session 1'
       },
       {
-        id: 1,
+        id: 2,
         name: 'Session 2'
       },
       {
-        id: 2,
+        id: 3,
         name: 'Session 3'
       }
     ]

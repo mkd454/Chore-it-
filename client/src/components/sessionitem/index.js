@@ -8,7 +8,7 @@ class SessionItem extends Component {
     return (
       <div>
         {this.props.sessions.map(session => (
-          <Link key={session.id} to="#list-home" className="list-group-item list-group-item-action" id={session.id} data-toggle="list" role="tab" aria-controls="home">{session.name}</Link>
+          <Link to={"/session/" + session.id} key={session.id} className="list-group-item list-group-item-action" id={session.id}>{session.name}</Link>
         ))}
       </div>
     );

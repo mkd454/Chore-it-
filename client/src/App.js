@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={CreateAccount} />
           <Route exact path="/session" component={CreateSession} />
-          <Route exact path="/session-details" component={SessionDetails} />
+          <Route path="/session/:id" component={SessionDetails} />
         </Switch>
       </div>
     </Router>

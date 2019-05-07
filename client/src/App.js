@@ -7,7 +7,7 @@ import Nav from "./components/navbar";
 import HomePage from './pages/home';
 import DashboardPage from './pages/dashboard';
 import CallbackPage from "./pages/callback";
-import Auth from "./components/Auth";
+import Auth from "./utils/Auth/Auth";
 
 class App extends React.Component {
   render() {

@@ -2,18 +2,18 @@
 
 const rules = {
   visitor: {
-    static: ["posts:list", "home-page:visit"]
+    static: ["posts:list", "home-page:visit"] /////////////REMEMBER TO CHANGE POSTLIST
   },
   tenant: {
     static: [
-      "posts:list",
+      "posts:list", /////////////REMEMBER TO CHANGE
       "posts:create",
       "users:getSelf",
       "home-page:visit",
       "dashboard-page:visit"
     ],
     dynamic: {
-      "posts:edit": ({userId, postOwnerId}) => {
+      "posts:edit": ({userId, postOwnerId}) => { /////////////REMEMBER TO CHANGE
         if (!userId || !postOwnerId) return false;
         return userId === postOwnerId;
       }
@@ -21,7 +21,7 @@ const rules = {
   },
   admin: {
     static: [
-      "posts:list",
+      "posts:list", /////////////REMEMBER TO CHANGE
       "posts:create",
       "posts:edit",
       "posts:delete",

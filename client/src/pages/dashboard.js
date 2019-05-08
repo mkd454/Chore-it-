@@ -1,3 +1,5 @@
+// This has all of the lego dudes
+
 import React from "react";
 import { Redirect } from "react-router-dom";
 

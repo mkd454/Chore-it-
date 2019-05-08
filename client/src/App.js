@@ -20,7 +20,7 @@ class App extends React.Component {
               <Route exact path="/" component={HomePage}/>
               <Route path="/dashboard" component={DashboardPage}/>
               <Route path="/callback" component={CallbackPage}/>
-              <Route path="/roomate/:id" component={RoommateDetails} />
+              <Route path="/roommate/:id" component={RoommateDetails} />
             </Switch>
           </Router>
         </Auth>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 class RoommateCard extends Component {
@@ -13,13 +14,15 @@ class RoommateCard extends Component {
 
   render() {
     return (
-      <div className="card roommate-card">
-        <img src={this.state.image} className="card-img-top rounded-circle" alt="roommate"/>
-        <div className="card-body">
-          <h5 className="card-title text-center">{this.state.name}</h5>
-          <small className="card-text">{this.state.description}</small>
+      <Link key={this.state.id} id={this.state.id} to={"/roommate/" + this.state.id}> 
+        <div className="card roommate-card">
+          <img src={this.state.image} className="card-img-top rounded-circle" alt="roommate"/>
+          <div className="card-body">
+            <h5 className="card-title text-center">{this.state.name}</h5>
+            <small className="card-text">{this.state.description}</small>
+          </div>
         </div>
-      </div>
+      </Link>
     )
   }
 }

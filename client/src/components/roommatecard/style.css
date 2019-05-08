@@ -1,3 +1,7 @@
 .roommate-card {
   border: none;
 }
+
+.card-body {
+  color: black;
+}

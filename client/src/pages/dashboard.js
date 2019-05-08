@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Redirect } from "react-router-dom";
+import Card from "../components/Welcome-Card/index"
 
 import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
@@ -19,8 +20,7 @@ const DashboardPage = () => (
           <div>
             <h1>Dashboard</h1>
             <Logout />
-            <Profile />
-            <PostsList />
+            <Card />
           </div>
         )}
         no={() => <Redirect to="/" />}

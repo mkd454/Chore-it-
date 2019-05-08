@@ -14,11 +14,7 @@ const HomePage = () => (
       authenticated ? (
         <Redirect to="/dashboard" />
       ) : (
-        <div>
-          <h2>Welcome to React RBAC Tutorial.</h2>
-          <Login />
-          <Card />
-        </div>
+        <Card />
       )
     }
   </AuthConsumer>

@@ -13,7 +13,7 @@ import Auth from "./utils/Auth/Auth";
 class App extends React.Component {
   render() {
     return (
-      <div className="App container-fluid">
+      <div className="App">
         <Auth>
           <Router>
             <Switch>

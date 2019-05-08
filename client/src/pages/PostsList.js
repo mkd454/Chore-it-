@@ -1,58 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 
-import posts from "../components/posts";
+import RoommateCard from "../components/roommatecard";
+import Roommates from "../components/roommates";
 import {AuthConsumer} from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
 
-const PostsList = () => (
-  <AuthConsumer>
-    {({user}) => (
-      <div>
-        <h2>Posts List</h2>
-        <table className="table">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Actions</th>
-          </tr>
-          </thead>
-          <tbody>
-          {posts.map((post, index) => (
-            <tr key={post.id}>
-              <th scope="row">{index + 1}</th>
-              <td>{post.title}</td>
-              <td>
-                <Can
-                  role={user.role}
-                  perform="posts:edit"
-                  data={{
-                    userId: user.id,
-                    postOwnerId: post.ownerId
-                  }}
-                  yes={() => (
-                    <button className="btn btn-sm btn-default">
-                      Edit Post
-                    </button>
-                  )}
+class PostsList extends Component {
+
+  render() {
+    return (
+      <AuthConsumer>
+        {({user}) => (
+          <div>
+            <h2>Roommates</h2>
+            <div className="card-columns">
+              {Roommates.map(roommate => (
+                <RoommateCard
+                  key={roommate.id}
+                  id={roommate.id}
+                  name={roommate.name}
+                  description={roommate.description}
+                  ownerId={roommate.ownerId}
+                  image={roommate.image}
                 />
-                <Can
-                  role={user.role}
-                  perform="posts:delete"
-                  yes={() => (
-                    <button className="btn btn-sm btn-danger">
-                      Delete Post
-                    </button>
-                  )}
-                />
-              </td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </div>
-    )}
-  </AuthConsumer>
-);
+              ))}
+            </div>
+          </div>
+        )}
+      </AuthConsumer>
+    )
+  }
+}
 
 export default PostsList;

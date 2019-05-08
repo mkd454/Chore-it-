@@ -14,27 +14,15 @@ class App extends React.Component {
     return (
       <div className="App container">
         <Auth>
-          <div className="jumbotron">
-            <Router>
-              <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route path="/dashboard" component={DashboardPage}/>
-                <Route path="/callback" component={CallbackPage}/>
-              </Switch>
-            </Router>
-          </div>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={HomePage}/>
+              <Route path="/dashboard" component={DashboardPage}/>
+              <Route path="/callback" component={CallbackPage}/>
+            </Switch>
+          </Router>
         </Auth>
       </div>
-      // <Router>
-      //   <div>
-      //     <Nav />
-      //     <Switch>
-      //       <Route exact path="/" component={CreateAccount} />
-      //       <Route exact path="/session" component={CreateSession} />
-      //       <Route path="/session/:id" component={SessionDetails} />
-      //     </Switch>
-      //   </div>
-      // </Router>
     );
   }
 }

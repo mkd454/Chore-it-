@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
 import Logout from "../components/authButtons/Logout";
+import TasksList from "../components/taskslist";
 
 import Roommates from "../components/roommates";
 
@@ -41,8 +42,8 @@ class RoommateDetails extends Component {
           <hr className="my-4" />
           <p className="lead">{this.state.description}</p>
           <hr className="my-4" />
-          <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </div>
+        <TasksList userId={this.state.id}/>
       </div>
     )
   }

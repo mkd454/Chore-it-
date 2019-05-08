@@ -71,7 +71,7 @@ class PeopleContainer extends Component {
   }
 
   getRoommates = () => {
-    for (let i=0; i<this.state.people.  length; i++) {
+    for (let i=0; i<this.state.people.length; i++) {
       if (this.state.people[i].id == this.props.session_id) {
         return this.state.people[i].roommates;
       }

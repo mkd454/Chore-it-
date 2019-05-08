@@ -18,8 +18,6 @@ const DashboardPage = () => (
         perform="dashboard-page:visit"
         yes={() => (
           <div>
-            <h1>Dashboard</h1>
-            <Logout />
             <Card />
           </div>
         )}

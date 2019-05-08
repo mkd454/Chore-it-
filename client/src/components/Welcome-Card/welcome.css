@@ -1,0 +1,22 @@
+h1 {
+  color: red;
+}
+
+.loginBackground {
+  background-color: blue;
+  border-radius: 10px;
+}
+
+#GroupHeader {
+  color: white;
+}
+
+#join-group {
+  margin: 0 auto;
+  width: 150px;
+}
+
+#create-group {
+  margin: 0 auto;
+  width: 150px;
+}

@@ -1,12 +1,19 @@
 import React from "react";
 import "./style.css";
 
-function CreateGroupForm() {
+export function GroupName(props) {
+  //console.log(props);
   return (
-    <div>
-      <h1>You made it!</h1>
+    <div className="form-group">
+      <input className="form-control" onChange={props.onChange}/>
     </div>
-  )
+  );
 }
 
-export default CreateGroupForm;
+export function GroupNameBtn(props) {
+  return (
+    <button {...props} className="btn btn-success">
+      {props.children}
+    </button>
+  );
+}

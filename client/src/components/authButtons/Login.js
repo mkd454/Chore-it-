@@ -3,6 +3,7 @@ import { AuthConsumer } from "../../utils/Auth/authContext";
 import "./login.css";
 
 const Login = () => (
+  <div id="flex">
   <div id="LoginPage"className = "container-fluid">
     <div className = "row">
       <div className = "col-2 col-lg-4 col-md-2"></div>
@@ -18,6 +19,7 @@ const Login = () => (
       </div>
       <div className="col-2 col-lg-4 col-md-2"></div>
     </div>
+  </div>
   </div>
 );
 

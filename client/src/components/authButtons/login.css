@@ -22,3 +22,9 @@
   font-family: 'Baloo Bhai', cursive;
   font-size: 5rem;
 }
+
+#flex {
+  display: flex;
+  height: 100vh;
+  align-items: center
+}

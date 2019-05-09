@@ -3,20 +3,20 @@ import { AuthConsumer } from "../../utils/Auth/authContext";
 import "./login.css";
 
 const Login = () => (
-  <div className = "container-fluid">
+  <div id="LoginPage"className = "container-fluid">
     <div className = "row">
-      <div className = "col-4"></div>
-      <div className="m-4 p-4 col-4">
-        <p className="h1 text-center mb-4" id="loginHeader">Login Here!</p>
+      <div className = "col-2 col-lg-4 col-md-2"></div>
+      <div className="col-8 col-lg-4 col-md-8">
+        <p className="h1 text-center mb-4 m-4" id="loginHeader">Chore-It!</p>
         <AuthConsumer>
           {({ initiateLogin }) => (
-            <button id="loginButton" className="btn btn-sm btn-primary d-flex justify-content-center" onClick={initiateLogin}>
+            <button id="loginButton" className="btn btn-block btn-lg btn-primary d-flex justify-content-center pr-5 pl-5" onClick={initiateLogin}>
               Login
             </button>
           )}
         </AuthConsumer>
       </div>
-      <div className="col-4"></div>
+      <div className="col-2 col-lg-4 col-md-2"></div>
     </div>
   </div>
 );

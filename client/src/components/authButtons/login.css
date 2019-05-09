@@ -1,7 +1,24 @@
+#LoginPage {
+  font-family: roboto;
+  /* background-color: #397be6; */
+  background-image: linear-gradient(to bottom right, #397be6, #1A3766);
+  height: 100vh;
+}
+
 #loginButton {
   margin: 0 auto;
+  font-family: roboto;
+  background-color: #1A3766;
+  border-color: transparent;
+}
+
+#loginButton:hover, #loginButton:focus, #loginButton:active {
+  background-color: #1a378e;
+  box-shadow: 0 0 3px white;
 }
 
 #loginHeader {
-  color: black;
+  color: white;
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 5rem;
 }

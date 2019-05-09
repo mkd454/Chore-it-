@@ -11,14 +11,18 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Users
-      .findById(req.params.id)
+      .find({authId: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body.userData)
+    console.log(req.body)
+    const user = {
+      authId: req.body.authId,
+      name: req.body.name
+    }
     db.Users
-      .create(req.body.userData)
+      .create(user)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

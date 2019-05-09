@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     name: { type: String, required: true },
-    authId: { type: String, required: true },
+    authId: { type: String, required: true, unique: true },
     tasks: [
         {
             type: Schema.Types.ObjectId,
@@ -13,6 +13,7 @@ const userSchema = new Schema({
     inGroup: [
         { 
             type: Schema.Types.ObjectId, 
+            ref: "Group",
             default: null
         }
     ],

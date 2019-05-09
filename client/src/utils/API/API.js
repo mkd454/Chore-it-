@@ -25,6 +25,8 @@ export default {
   },
   // Gets the user with the given id
   getUser: function(id) {
+    console.log("doop doop")
+    console.log(id);
     return axios.get("/api/users/" + id);
   },
   // Deletes the user with the given id
@@ -35,6 +37,7 @@ export default {
   saveUser: function(userData) {
     console.log("did this run")
     console.log(userData);
+    if (userData.id)
     return axios.post("/api/users", userData);
   }
 };

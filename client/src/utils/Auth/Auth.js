@@ -61,9 +61,11 @@ class Auth extends Component {
       user
     });
 
-    API.saveUser({
-      name: data.name
-    });
+    API.getUser(data.sub)
+    // API.saveUser({
+    //   authId: data.sub,
+    //   name: data.name
+    // });
   };
 
   render() {

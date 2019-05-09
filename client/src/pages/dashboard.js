@@ -2,13 +2,13 @@
 
 import React from "react";
 import { Redirect } from "react-router-dom";
-import Card from "../components/Welcome-Card/index"
+// import Card from "../components/Welcome-Card/index"
+import CreateGroup from "../pages/createGroup"
 
 import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
 import Logout from "../components/authButtons/Logout";
 import Profile from "../pages/profile";
-import PostsList from "../pages/PostsList"; /////////////REMEMBER TO CHANGE
 
 const DashboardPage = () => (
   <AuthConsumer>
@@ -18,7 +18,9 @@ const DashboardPage = () => (
         perform="dashboard-page:visit"
         yes={() => (
           <div>
-            <Card />
+            <Profile />
+            <Logout />
+            <CreateGroup />
           </div>
         )}
         no={() => <Redirect to="/" />}

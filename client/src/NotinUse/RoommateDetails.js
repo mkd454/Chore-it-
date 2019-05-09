@@ -19,7 +19,7 @@ class RoommateDetails extends Component {
 
   componentWillMount() {
     let roommate = Roommates.find(obj => {
-      return obj.id == this.props.match.params.id;
+      return obj.id === this.props.match.params.id;
     });
 
     this.setState({

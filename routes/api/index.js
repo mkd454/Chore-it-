@@ -1,7 +1,11 @@
 const router = require("express").Router();
 const groupRoutes = require("./groups");
+const userRoutes = require("./users");
 
-// Book routes
+// Group routes
 router.use("/groups", groupRoutes);
+
+// User routes
+router.use("/users", groupRoutes);
 
 module.exports = router;

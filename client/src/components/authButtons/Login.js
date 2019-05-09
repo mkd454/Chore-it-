@@ -6,7 +6,7 @@ const Login = () => (
   <div className = "container-fluid">
     <div className = "row">
       <div className = "col-4"></div>
-      <form className="m-4 p-4 col-4">
+      <div className="m-4 p-4 col-4">
         <p className="h1 text-center mb-4" id="loginHeader">Login Here!</p>
         <AuthConsumer>
           {({ initiateLogin }) => (
@@ -15,7 +15,7 @@ const Login = () => (
             </button>
           )}
         </AuthConsumer>
-      </form>
+      </div>
       <div className="col-4"></div>
     </div>
   </div>

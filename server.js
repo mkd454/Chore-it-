@@ -1,11 +1,8 @@
 const express = require("express");
-const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
-
-// Require all models
-const db = require("./models");
+const routes = require("./routes");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -19,19 +16,7 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3");
 
 // Define API routes here
-db.Group.create({ name: "Group1Test" })
-  .then(function(dbGroup) {
-    console.log(dbGroup);
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

@@ -37,7 +37,7 @@ export default {
   saveUser: function(userData) {
     console.log("did this run")
     console.log(userData);
-    if (userData.id)
+    if (userData.authId)
     return axios.post("/api/users", userData);
   }
 };

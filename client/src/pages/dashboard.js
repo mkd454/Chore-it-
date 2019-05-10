@@ -18,7 +18,7 @@ const DashboardPage = () => (
         perform="dashboard-page:visit"
         yes={() => (
           <div>
-            <Profile />
+            <Profile user={user}/>        
             <Card />
             <Logout />
           </div>

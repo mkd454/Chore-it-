@@ -1,20 +1,34 @@
 import React from "react";
+import API from "../utils/API/API";
 
-import {AuthConsumer} from "../utils/Auth/authContext";
 
-const Profile = () => (
-  <AuthConsumer>
-    {({user}) => (
+class Profile extends React.Component {
+  state = {
+    groupId: ""
+  }
+
+  componentDidMount(){
+    console.log(this.props.user);
+    API.getUser(this.props.user.id)
+      .then(res => this.setState({ groupId:res.data[0].inGroup }))
+      .catch(err => console.log(err));
+  }
+
+  render () {
+    console.log(this.props.user);
+    return (
       <div>
         <h2>User Profile</h2>
         <ul>
-          <li>ID: {user.id}</li>
-          <li>Name: {user.name}</li>
-          <li>Email: {user.email}</li>
+          <li>ID: {this.props.user.id}</li>
+          <li>Name: {this.props.user.name}</li>
+          <li>Email: {this.props.user.email}</li>
+          <li>Group Id: {this.state.groupId}</li>
         </ul>
       </div>
-    )}
-  </AuthConsumer>
-);
+    )
+  }
+};
+
 
 export default Profile;

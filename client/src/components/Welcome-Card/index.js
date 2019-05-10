@@ -4,7 +4,6 @@ import "./welcome.css";
 
 function Card() {
   return (
-    <div id="flex">
     <div id="LoginPage" className="container-fluid">
       <div className="row d-flex justify-content-center">
         <div className=" col-2 col-lg-4 col-md-2"></div>
@@ -29,7 +28,6 @@ function Card() {
         </div>
         <div className="col-2 col-lg-4 col-md-2"></div>
       </div>
-    </div>
     </div>
   )
 }

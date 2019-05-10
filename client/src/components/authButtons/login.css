@@ -1,10 +1,3 @@
-#LoginPage {
-  font-family: roboto;
-  /* background-color: #397be6; */
-  background-image: linear-gradient(to bottom right, #397be6, #1A3766);
-  height: 100vh;
-}
-
 #loginButton {
   margin: 0 auto;
   font-family: roboto;
@@ -15,6 +8,7 @@
 #loginButton:hover, #loginButton:focus, #loginButton:active {
   background-color: #1a378e;
   box-shadow: 0 0 3px white;
+  cursor: pointer;
 }
 
 #loginHeader {
@@ -25,6 +19,9 @@
 
 #flex {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  align-items: center
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to bottom right, #397be6, #1A3766);
 }

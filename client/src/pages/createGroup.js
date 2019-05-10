@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { GroupName, GroupNameBtn } from "../components/GroupForm/index"
 import API from "../utils/API/API";
+import {AuthConsumer} from "../utils/Auth/authContext";
 
 class CreateGroup extends Component {
   state = {
@@ -25,13 +26,13 @@ class CreateGroup extends Component {
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event, id) => {
+    console.log(id);
     event.preventDefault();
-    console.log(this.state.groupName);  
     if (this.state.groupName) {
       API.saveGroup({
         name: this.state.groupName,
-      })
+      }, id)
         .then(res => this.loadGroups())
         .catch(err => console.log(err));
     }
@@ -39,24 +40,26 @@ class CreateGroup extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <h1>Please choose a name for your group:</h1>
-          <GroupName 
-            value={this.state.groupName}
-            onChange={this.handleInputChange}
-            type="text"
-            name="groupName"
-            placeholder="Group Name (required)"
-          />
-          <GroupNameBtn
-            // disabled={!(this.state.)}
-            onClick={this.handleFormSubmit}
-          >
-            Submit
-          </GroupNameBtn>
-        </form>
-      </div>
+      <AuthConsumer>
+        {({user}) => (
+          <form>
+            <h1>Please choose a name for your group:</h1>
+            <GroupName 
+              value={this.state.groupName}
+              onChange={this.handleInputChange}
+              type="text"
+              name="groupName"
+              placeholder="Group Name (required)"
+            />
+            <GroupNameBtn
+              // disabled={!(this.state.)}
+              onClick={event => this.handleFormSubmit(event, user.id)}
+            >
+              Submit
+            </GroupNameBtn>
+          </form>)
+        }
+      </AuthConsumer>
     )
   }
 }

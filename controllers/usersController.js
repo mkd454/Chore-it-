@@ -31,9 +31,9 @@ module.exports = {
 
   update: function(req, res) {
     console.log("hit me baby one more time")
-    console.log(req)
     db.Users
-      .findOneAndUpdate({ authId : req.body.id }, {inGroup: req.body.groupData})
+      .findOneAndUpdate(
+        { authId : req.body.id }, req.body.groupData )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

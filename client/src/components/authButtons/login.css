@@ -1,13 +1,13 @@
 #loginButton {
   margin: 0 auto;
   font-family: roboto;
-  background-color: #1A3766;
+  /* background-color: #1A3766; */
   border-color: transparent;
 }
 
 #loginButton:hover, #loginButton:focus, #loginButton:active {
-  background-color: #1a378e;
-  box-shadow: 0 0 3px white;
+  /* background-color: #1a378e; */
+  /* box-shadow: 0 0 3px white; */
   cursor: pointer;
 }
 

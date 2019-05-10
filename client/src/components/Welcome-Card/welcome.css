@@ -1,18 +1,22 @@
-.loginBackground {
-  background-color: blue;
-  border-radius: 10px;
-}
-
 #GroupHeader {
   color: white;
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 5rem;
 }
 
-#join-group {
-  margin: 0 auto;
-  width: 150px;
+.buttonLink, .buttonLink:hover {
+  text-decoration: none;
 }
 
-#create-group {
+#create-group, #join-group {
   margin: 0 auto;
-  width: 150px;
+  font-family: roboto;
+  background-color: #1A3766;
+  color: white;
+  border-color: transparent;
+}
+
+#create-group:hover, #join-group:hover {
+  background-color: #1a378e;
+  box-shadow: 0 0 3px white;
 }

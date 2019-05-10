@@ -18,7 +18,9 @@ const DashboardPage = () => (
         perform="dashboard-page:visit"
         yes={() => (
           <div>
+            <Profile />
             <Card />
+            <Logout />
           </div>
         )}
         no={() => <Redirect to="/" />}

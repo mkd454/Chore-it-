@@ -13,8 +13,30 @@ export default {
   deleteGroup: function(id) {
     return axios.delete("/api/groups/" + id);
   },
-  // Saves a group to the database
-  saveGroup: function(groupData) {
-    return axios.post("/api/groups", groupData);
+  saveGroup: function(groupData, userId) {
+    return axios.post("/api/groups", { groupData, userId});
+  },
+
+
+  // Gets all users
+  getUsers: function() {
+    return axios.get("/api/users");
+  },
+  // Gets the user with the given id
+  getUser: function(id) {
+    console.log("doop doop")
+    console.log(id);
+    return axios.get("/api/users/" + id);
+  },
+  // Deletes the user with the given id
+  deleteUser: function(id) {
+    return axios.delete("/api/users/" + id);
+  },
+  // Saves a user to the database
+  saveUser: function(userData) {
+    console.log("did this run")
+    console.log(userData);
+    if (userData.authId)
+    return axios.post("/api/users", userData);
   }
 };

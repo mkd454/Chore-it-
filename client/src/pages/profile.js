@@ -9,7 +9,7 @@ const Profile = () => (
         <h2>User Profile</h2>
         <ul>
           <li>ID: {user.id}</li>
-          <li>ID: {user.name}</li>
+          <li>Name: {user.name}</li>
           <li>Email: {user.email}</li>
         </ul>
       </div>

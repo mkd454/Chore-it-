@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import auth0 from "auth0-js";
-
+import API from "../API/API";
 import {AUTH_CONFIG} from "./auth0-variables";
 import {AuthProvider} from "./authContext";
 
@@ -50,6 +50,7 @@ class Auth extends Component {
   setSession(data) {
     const user = {
       id: data.sub,
+      name: data.name,
       email: data.email,
       role: data[AUTH_CONFIG.roleUrl]
     };
@@ -57,6 +58,10 @@ class Auth extends Component {
       authenticated: true,
       accessToken: data.accessToken,
       user
+    });
+    API.saveUser({
+      authId: data.sub,
+      name: data.name
     });
   };
 

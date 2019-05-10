@@ -15,6 +15,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  //Creates the user, adds the authId, grabs "name" from login.
   create: function(req, res) {
     console.log(req.body)
     const user = {
@@ -22,16 +24,20 @@ module.exports = {
       name: req.body.name
     }
     db.Users
-      .create(user)
+      .findOneAndUpdate({authId: req.body.authId}, user, {upsert: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   update: function(req, res) {
+    console.log("hit me baby one more time")
+    console.log(req)
     db.Users
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ authId : req.body.id }, {inGroup: req.body.groupData})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   remove: function(req, res) {
     db.Users
       .findById({ _id: req.params.id })

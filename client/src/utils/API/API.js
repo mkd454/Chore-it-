@@ -38,5 +38,12 @@ export default {
     console.log(userData);
     if (userData.authId)
     return axios.post("/api/users", userData);
+  },
+  // Update user's group Id
+  updateUser: function(groupData, id) {
+    console.log("doop doop 2.0")
+    console.log(groupData);
+    console.log(id);
+    return axios.put("api/users/" + id);
   }
 };

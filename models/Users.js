@@ -14,10 +14,11 @@ const userSchema = new Schema({
         { 
             type: Schema.Types.ObjectId, 
             ref: "Group",
-            default: null
+            default: "Whatabatbingbogn"
         }
     ],
-    balance: { type: Number, default: 0}
+    balance: { type: Number, default: 0},
+    token: {type: String, required: true}
 });
 
 const Users = mongoose.model("Users", userSchema);

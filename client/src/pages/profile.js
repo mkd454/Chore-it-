@@ -8,6 +8,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
+    console.log("Grabbing user data for profile page");
     console.log(this.props.user);
     API.getUser(this.props.user.id)
       .then(res => this.setState({ groupId:res.data[0].inGroup }))
@@ -15,7 +16,6 @@ class Profile extends React.Component {
   }
 
   render () {
-    console.log(this.props.user);
     return (
       <div>
         <h2>User Profile</h2>

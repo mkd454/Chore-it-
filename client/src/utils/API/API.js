@@ -24,9 +24,16 @@ export default {
   },
   // Gets the user with the given id
   getUser: function(id) {
-    console.log("doop doop")
+    console.log("Function running on profile page")
     console.log(id);
     return axios.get("/api/users/" + id);
+  },
+  // Finds user by authId & changes their group
+  changeUsersGroup: function( groupid, userid) {
+    console.log("Changing user's group")
+    console.log(groupid);
+    console.log(userid);
+    return axios.put("/api/users/" + userid, {groupid,userid});
   },
   // Deletes the user with the given id
   deleteUser: function(id) {
@@ -34,9 +41,9 @@ export default {
   },
   // Saves a user to the database
   saveUser: function(userData) {
-    console.log("did this run")
+    console.log("On my way to creating a new user! (run when user logs in)")
     console.log(userData);
-    if (userData.authId)
+    if (userData)
     return axios.post("/api/users", userData);
   }
 };

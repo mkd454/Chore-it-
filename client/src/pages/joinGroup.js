@@ -30,8 +30,8 @@ class JoinGroup extends Component {
     console.log(id);
     event.preventDefault();
     if (this.state.groupId) {
-      API.saveGroup({
-        name: this.state.groupId,
+      API.changeUsersGroup({
+        inGroup: this.state.groupId,
       }, id)
         .then(res => this.loadGroups())
         .catch(err => console.log(err));

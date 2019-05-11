@@ -16,19 +16,24 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("Creating a new user: ");
     console.log(req.body)
     const user = {
       authId: req.body.authId,
       name: req.body.name
     }
     db.Users
-      .create(user)
+      .findOneAndUpdate({authId: req.body.authId}, user, {upsert: true})
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {console.log(err); res.status(422).json(err)});
   },
   update: function(req, res) {
+    console.log("Changing user's groupId: ");
+    console.log(req.body);
     db.Users
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ 
+        authId: req.body.userid }, {
+        inGroup: req.body.groupid.inGroup })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -5,13 +5,13 @@ import {AuthConsumer} from "../../utils/Auth/authContext";
 const Profile = () => (
   <AuthConsumer>
     {({user}) => (
-      <div class="cardContainer">
-        <div class="ProfileInformationContainer">
-        <h2 class="profileHeader">Your Profile</h2>
-          <ul class="profileInformationList">
-            <li class="profileListDetail"><h5>Your Unique ID</h5><break/><p>{user.id}</p></li>
-            <li class="profileListDetail"><h5>Username</h5><break/><p>{user.name}</p></li>
-            <li class="profileListDetail"><h5>Email</h5><break/><p>{user.email}</p></li>
+      <div className="cardContainer">
+        <div className="ProfileInformationContainer">
+        <h2 className="profileHeader">Your Profile</h2>
+          <ul className="profileInformationList">
+            <li className="profileListDetail"><h5>Your Unique ID</h5><break/><p>{user.id}</p></li>
+            <li className="profileListDetail"><h5>Username</h5><break/><p>{user.name}</p></li>
+            <li className="profileListDetail"><h5>Email</h5><break/><p>{user.email}</p></li>
           </ul>
         </div>
       </div>

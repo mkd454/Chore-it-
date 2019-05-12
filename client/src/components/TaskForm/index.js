@@ -16,7 +16,6 @@ export function TaskValue(props) {
     <input className="form-control" onChange={props.onChange}/>
   </div>
       );
-    }
 }
 
 export function TaskBtn(props) {

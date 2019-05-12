@@ -28,6 +28,9 @@ function Card() {
         </div>
         <div className="col-2 col-lg-4 col-md-2"></div>
       </div>
+      <Link class="buttonLink" to="/addtask">
+    <button type="button" id="addtask" className="btn btn-lg btn-block pl-4 pr-4">Add Task</button>
+    </Link>
     </div>
   )
 }

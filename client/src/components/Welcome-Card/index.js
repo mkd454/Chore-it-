@@ -13,7 +13,7 @@ function Card() {
       <div className="row">
         <div className="col-2 col-lg-4 col-md-2"></div>
         <div className="col-8 col-lg-4 col-md-8">
-          <Link class="buttonLink" to="/group/create">
+          <Link className="buttonLink" to="/group/create">
             <button type="button" id="create-group" className="btn btn-lg btn-block pl-4 mb-4 pr-4">Create Group</button>
           </Link>
         </div>

@@ -1,5 +1,6 @@
 .groups-container {
   background-color: #FFF;
+  color: #000;
   height: 70%;
 }
 
@@ -7,4 +8,21 @@
   padding-top: 15%;
   text-align: center;
   color: gray;
+}
+
+.button-container .btn {
+  margin-left: 15px;
+}
+
+.form-container {
+  padding: 20px;
+  color: gray;
+}
+
+.form-button-container {
+  text-align: center;
+}
+
+.form-container .btn {
+  margin: 0 10px;
 }

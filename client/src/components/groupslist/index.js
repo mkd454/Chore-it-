@@ -46,7 +46,7 @@ class GroupsList extends Component {
 
   render () {
     return (
-      <div>
+      <div className="groups-container">
         {this.renderContent()}
       </div>
     )

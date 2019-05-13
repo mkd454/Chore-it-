@@ -14,7 +14,7 @@ const groupSchema = new Schema({
           type: Schema.Types.ObjectId,
           ref: "Tasks"
       }
-  ] 
+  ]
 });
 
 const Group = mongoose.model("Group", groupSchema);

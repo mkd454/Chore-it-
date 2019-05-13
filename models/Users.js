@@ -10,13 +10,12 @@ const userSchema = new Schema({
             ref: "Tasks"
         }
     ],
-    inGroup: [
-        { 
+    inGroup: {  
             type: Schema.Types.ObjectId, 
             ref: "Group",
             default: null
-        }
-    ],
+    },
+
     balance: { type: Number, default: 0}
 });
 

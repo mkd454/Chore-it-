@@ -45,5 +45,17 @@ export default {
     console.log(userData);
     if (userData)
     return axios.post("/api/users", userData);
+  },
+
+  //Tasks functions
+
+  getTasks: function(){
+    return axios.get("/api/tasks");
+  },
+
+  saveTask: function(taskData){
+    console.log(taskData);
+    console.log("Creating Task...")
+    return axios.post("/api/tasks", taskData);
   }
 };

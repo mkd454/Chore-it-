@@ -10,6 +10,8 @@ import RoommateDetails from "./pages/RoommateDetails";
 import Auth from "./utils/Auth/Auth";
 import CreateGroup from "./pages/createGroup"
 import JoinGroup from "./pages/joinGroup"
+import InGroup from "./pages/inGroup"
+import AddTask from "./pages/addTask"
 
 class App extends React.Component {
   render() {
@@ -24,6 +26,8 @@ class App extends React.Component {
               <Route path="/roommate/:id" component={RoommateDetails} />
               <Route exact path="/group/create" component={CreateGroup} />
               <Route exact path="/group/join" component={JoinGroup} />
+              <Route path="/dashboard/:id" component={InGroup} />
+              <Route path="/addtask" component={AddTask} />
             </Switch>
           </Router>
         </Auth>

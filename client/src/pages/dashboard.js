@@ -16,6 +16,12 @@ import GroupsList from '../components/groupslist';
 import "./dashboard.css";
 import API from "../utils/API/API";
 
+deleteTask = id => {
+  API.deleteTask(id)
+    .then(res => this.getUserData())
+    .catch(err => console.log(err));
+};
+
 class DashboardPage extends Component {
   state = {
     activeTab: "tasks",

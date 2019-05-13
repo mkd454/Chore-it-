@@ -22,7 +22,11 @@ function Card() {
       <div className="row">
         <div className="col-2 col-lg-4 col-md-2"></div>
         <div className="col-8 col-lg-4 col-md-8">
+<<<<<<< HEAD
           <Link className="buttonLink" to="/group/create">
+=======
+          <Link class="buttonLink" to="/group/join">
+>>>>>>> master
             <button type="button" id="join-group" className="btn btn-lg btn-block pl-4 pr-4">Join Group</button>
           </Link>
         </div>

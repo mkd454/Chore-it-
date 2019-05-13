@@ -20,9 +20,10 @@ module.exports = {
     db.Group
       .create(req.body.groupData)
       .then(dbModel => {
+        console.log(dbModel._id);
         // then update the user's obj to say they're in the newly created group
         db.Users.findOneAndUpdate({
-          _id: req.body.userId
+          authId: req.body.userId
         }, {
           inGroup: dbModel._id
         }).then(dbUser => {

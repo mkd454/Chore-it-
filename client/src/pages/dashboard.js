@@ -18,7 +18,13 @@ const DashboardPage = () => (
         perform="dashboard-page:visit"
         yes={() => (
           <div>
+<<<<<<< HEAD
             <Profile />
+=======
+            <Profile user={user}/>        
+            <Card />
+            <Logout />
+>>>>>>> master
           </div>
         )}
         no={() => <Redirect to="/" />}

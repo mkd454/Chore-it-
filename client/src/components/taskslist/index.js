@@ -1,38 +1,114 @@
 import React, { Component } from 'react';
+import API from "../../utils/API/API";
 
-import TaskCard from '../taskcard';
+import TaskItem from '../taskitem';
+import './style.css';
 
-import Tasks from "../tasks";
 
 class TasksList extends Component {
   state = {
-    tasks: []
+    tasks: [],
+    taskForm: false,
+    taskName: '',
+    taskValue: '',
+    userId: this.props.userId
   }
 
   componentWillMount() {
-    let tasks = Tasks.filter(obj => {
-      return obj.userId == this.props.userId;
-    });
+    API.getUserTasks(this.state.userId)
+      .then(res => this.setState({
+        tasks: res.data
+      }))
+      .catch(err => console.log(err));
+  }
+
+  componentWillUpdate() {
+    API.getUserTasks(this.state.userId)
+      .then(res => this.setState({
+        tasks: res.data
+      }))
+      .catch(err => console.log(err));
+  }
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
 
     this.setState({
-      tasks: tasks
+      [name]: value
     });
+  }
+
+  addTaskForm = (boolean) => {
+    this.setState({
+      taskForm: boolean
+    });
+  }
+
+  addTask = (e) => {
+    e.preventDefault();
+
+    const taskData = {
+      taskName: this.state.taskName,
+      amount: this.state.taskValue,
+      userId: this.state.userId
+    }
+    API.saveTask(taskData)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    this.setState({
+      taskForm: false
+    });
+  }
+
+  renderContent = () => {
+    if (this.state.tasks.length === 0 && !this.state.taskForm) {
+      return (
+        <div className="button-container">
+          <h3>You have no tasks.</h3>
+          <button type="button" className="btn btn-primary btn-lg" onClick={() => this.addTaskForm(true)}>Add Task</button>
+        </div>
+      );
+    } else if (this.state.taskForm) {
+      return (
+        <div className="form-container">
+          <form>
+            <div className="form-group">
+              <label>Task Name</label>
+              <input onChange={this.handleInputChange} name="taskName" value={this.state.taskName} type="text" className="form-control" placeholder="Wash dishes"/>
+            </div>
+            <div className="form-group">
+              <label>Amount</label>
+              <input onChange={this.handleInputChange} value={this.state.taskValue} name="taskValue" type="text" className="form-control" placeholder="Enter amount for task"/>
+            </div>
+            <div className="form-button-container">
+              <button onClick={this.addTask} className="btn btn-primary">Submit</button>
+              <button onClick={() => this.addTaskForm(false)} className="btn btn-primary">Back</button>
+            </div>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <ul class="list-group">
+          {this.state.tasks.map(task => (
+            <TaskItem
+              key={task._id}
+              id={task._id}
+              name={task.taskName}
+              amount={task.amount}
+            />
+          ))}
+        </ul>
+      )
+    }
   }
 
   render () {
     return (
-      <div>
-        <h2>Tasks</h2>
-        <div className="card-columns">
-          {this.state.tasks.map(task => (
-            <TaskCard
-              key={task.id}
-              id={task.id}
-              name={task.name}
-              description={task.description}
-            />
-          ))}
-        </div>
+      <div className="tasks-container">
+        {this.renderContent()}
       </div>
     )
   }

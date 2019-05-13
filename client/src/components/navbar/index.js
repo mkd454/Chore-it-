@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+
+import './style.css';
 
 class Nav extends Component {
-  state = {}
+  state = {
+    activeTab: "tasks"
+  }
+
+  checkActiveTab = (tab) => {
+    if (tab === this.state.activeTab) {
+      return 'active';
+    } else {
+      return '';
+    }
+  }
+
+  changeTab = (tab) => {
+    this.setState({
+      activeTab: tab
+    });
+
+    this.props.changeTab(tab);
+
+    return;
+  }
 
   render() {
     return (
-      <ul className="nav justify-content-center">
+      <ul className="nav nav-tabs nav-justified">
         <li className="nav-item">
-          <Link className="nav-link active" to="/">Home</Link>
+          <a className={"nav-link " + this.checkActiveTab('tasks')} onClick={()=>this.changeTab('tasks')}>Your Tasks</a>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/session">Sessions</Link>
+          <a className={"nav-link " + this.checkActiveTab('groups')} onClick={()=>this.changeTab('groups')}>Your Groups</a>
         </li>
       </ul>
     )

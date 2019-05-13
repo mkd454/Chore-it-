@@ -7,7 +7,7 @@ import Card from "../components/Welcome-Card/index"
 import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
 import Logout from "../components/authButtons/Logout";
-import Profile from "../pages/profile";
+import Profile from "../components/ProfileComponent/Profile";
 import PostsList from "../pages/PostsList"; /////////////REMEMBER TO CHANGE
 
 const DashboardPage = () => (

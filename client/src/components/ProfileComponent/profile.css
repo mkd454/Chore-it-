@@ -1,0 +1,84 @@
+.cardContainer{
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* justify-content: center; */
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #397be6, #1A3766);
+  color: white;
+}
+
+.profileHeader {
+  font-family: roboto;
+  margin-bottom: 32px;
+}
+
+.ProfileInformationContainer {
+  display: flex;
+  padding-top: 30px;
+  /* height: 50%; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  /* padding: 25px 100px; */
+  width: 100%;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 30px #0000004d;
+}
+
+.profileInformationList {
+  list-style: none;
+  padding: 0px;
+  text-align: center;
+}
+
+.profileListDetail {
+  margin-bottom: 24px;
+  list-style: none;
+}
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  font-weight: bold;
+}
+
+.NavItem p {
+  margin: 1rem 0;
+  color:  #adb5bd;
+}
+
+.NavItem p:hover {
+  color: #397be6;
+  cursor: pointer;
+}
+
+.tasksContainer {
+  width: 95%;
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.listContainer {
+  width: 95%;
+  height: 50%;
+  list-style: none;
+  margin: 0 auto;
+  /* margin: 5%; */
+  /* justify-content: center; */
+  padding-left: 0;
+}
+
+.listItem {
+  padding: 20px 10px 20px;
+  background: white;
+  color: black;
+  border-radius: 15px;
+  margin: 15px 0;
+}

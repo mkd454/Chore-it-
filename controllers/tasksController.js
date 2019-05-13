@@ -49,4 +49,10 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
+
+//     assign: function (req,res) {
+//         db.Tasks
+//             .findById({_id: req.params.id})
+//             .then(dbModel )
+//     }
 };

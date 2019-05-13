@@ -18,7 +18,7 @@ const Button = posed.div({
     transition: {
       boxShadow: { ease: 'linear', duration: 10 },
       backgroundColor: { ease: 'linear', duration: 10 },
-      scale: { type: 'spring', stiffness: 100, damping: 5}
+      scale: { type: 'spring', stiffness: 100, damping: 3.5}
     }
   },
   press: {
@@ -34,11 +34,11 @@ const Label = posed.span({
   init: { color: 'white' }
 });
 
-const LoginButton = () => (
+const LoginButton = (props) => (
   <AuthConsumer>
     {({ initiateLogin }) => (
       <Button id="loginButton" className="btn btn-lg btn-primary" onClick={initiateLogin}>
-          <Label id="login-text">Login</Label>
+          <Label id="login-text">{props.children}</Label>
       </Button>
     )}
   </AuthConsumer>

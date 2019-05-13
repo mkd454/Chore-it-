@@ -6,7 +6,7 @@ import "./login.css";
 const Login = () => (
   <div id="flex">
     <p className="h1 text-center mb-4" id="loginHeader">Chore-It!</p>
-    <LoginButton />
+    <LoginButton >Login</LoginButton>
   </div>
 );
 

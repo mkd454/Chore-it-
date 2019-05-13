@@ -22,13 +22,13 @@ function Card() {
       <div className="row">
         <div className="col-2 col-lg-4 col-md-2"></div>
         <div className="col-8 col-lg-4 col-md-8">
-          <Link class="buttonLink" to="/group/join">
+          <Link className="buttonLink" to="/group/join">
             <button type="button" id="join-group" className="btn btn-lg btn-block pl-4 pr-4">Join Group</button>
           </Link>
         </div>
         <div className="col-2 col-lg-4 col-md-2"></div>
       </div>
-      <Link class="buttonLink" to="/addtask">
+      <Link className="buttonLink" to="/addtask">
     <button type="button" id="addtask" className="btn btn-lg btn-block pl-4 pr-4">Add Task</button>
     </Link>
     </div>

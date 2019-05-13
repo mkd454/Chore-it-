@@ -3,7 +3,7 @@ import NavBar from "../ProfileNav/NavBar";
 import YourTasks from "../../pages/yourtasks";
 import Group from "../../pages/group";
 
-class TaskContainer extends React.Component {
+class ProfileContainer extends React.Component {
   state = {
     currentPage: "yourtasks"
   };
@@ -33,4 +33,4 @@ class TaskContainer extends React.Component {
   }
 }
 
-export default TaskContainer;
+export default ProfileContainer;

@@ -9,8 +9,6 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
-    console.log("Grabbing user data for profile page");
-    console.log(this.props.user);
     API.getUser(this.props.user.id)
       .then(res => this.setState({ groupId:res.data[0].inGroup }))
       .catch(err => console.log(err));
@@ -19,22 +17,23 @@ class Profile extends React.Component {
   render () {
     return (
       <div>
-        <div className="cardContainer">
-          <div className="ProfileInformationContainer">
-            <h2 className="profileHeader">Your Profile</h2>
-            <ul className="profileInformationList">
-              <li className="profileListDetail"><h5>Your Unique ID</h5><break/><p>{this.props.user.id}</p></li>
-              <li className="profileListDetail"><h5>Username</h5><break/><p>{this.props.user.name}</p></li>
-              <li className="profileListDetail"><h5>Email</h5><break/><p>{this.props.user.email}</p></li>
-              <li className="profileListDetail"><h5>Group Id:</h5><break/><p>{this.state.groupId}</p></li>
-            </ul>
-            <ProfileContainer />
+        <h2 className="profileHeader">Your Profile</h2>
+        <div className="row">
+          <div className="col-md-3">
+            <h5>Your Unique ID</h5>
+            <p id="user-id">{this.props.user.id}</p>
           </div>
-          <div className="tasksContainer">
-            <ul className="listContainer">
-              <li className="listItem">Task 1</li>
-              <li className="listItem">Task 1</li>
-            </ul>
+          <div className="col-md-3">
+            <h5>Username</h5>
+            <p id="username">{this.props.user.name}</p>
+          </div>
+          <div className="col-md-3">
+            <h5>Email</h5>
+            <p id="user-email">{this.props.user.email}</p>
+          </div>
+          <div className="col-md-3">
+            <h5>Group ID:</h5>
+            <p id="user-group-id">{this.state.groupId}</p>
           </div>
         </div>
       </div>

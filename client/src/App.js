@@ -26,7 +26,7 @@ class App extends React.Component {
               <Route path="/roommate/:id" component={RoommateDetails} />
               <Route exact path="/group/create" component={CreateGroup} />
               <Route exact path="/group/join" component={JoinGroup} />
-              <Route path="/dashboard/:id" component={InGroup} />
+              {/* <Route path="/dashboard/:id" component={InGroup} /> */}
               <Route path="/addtask" component={AddTask} />
             </Switch>
           </Router>

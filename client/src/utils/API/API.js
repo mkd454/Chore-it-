@@ -53,6 +53,10 @@ export default {
     return axios.get("/api/tasks");
   },
 
+  getUserTasks: function(userId) {
+    return axios.get("/api/tasks/users/" + userId);
+  },
+
   saveTask: function(taskData){
     console.log(taskData);
     console.log("Creating Task...")

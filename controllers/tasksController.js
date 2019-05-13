@@ -9,6 +9,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findUserTasks: function (req, res) {
+        db.Tasks
+            .find(req.body.userId)
+            .sort({ date: -1 })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     // Not required for now
     //   findById: function(req, res) {
     //     db.Tasks
@@ -17,25 +24,33 @@ module.exports = {
     //       .catch(err => res.status(422).json(err));
     //   },
     create: function (req, res) {
-        console.log("Creating Task...")
         const taskDetails = {
-            taskName: req.body.name,
-            amount: req.body.value
+            taskName: req.body.taskName,
+            amount: req.body.amount,
+            userId: req.body.userId
         }
         db.Tasks
             .create(taskDetails)
             .then(dbModel => {
-                db.Users.findOne({ authId: req.body.userId })
-                    .then(dbUser => {
-                        console.log(dbUser.inGroup);
-                        console.log(dbModel._id);
-                        db.Group.findOneAndUpdate(
-                        {_id: dbUser.inGroup}
-                        ,
-                        {$push: { tasks: dbModel._id }
-                        },
-                        {new: true})
-                    })
+                console.log(dbModel._id);
+                console.log(req.body.userId);
+                db.Users.findOneAndUpdate(
+                    { authId: req.body.userId },
+                    { $push: { tasks: dbModel._id }},
+                    { new: true },
+                    (error, doc) => {console.log(doc)}
+                )
+                // db.Users.findOne({ authId: req.body.userId })
+                    // .then(dbUser => {
+                        // console.log(dbUser.inGroup);
+                        // console.log(dbModel._id);
+                        // db.Group.findOneAndUpdate(
+                        // {_id: dbUser.inGroup}
+                        // ,
+                        // {$push: { tasks: dbModel._id }
+                        // },
+                        // {new: true})
+                    // })
 
             })
             .then(dbTask => res.json(dbTask))

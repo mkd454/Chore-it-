@@ -16,6 +16,11 @@ export default {
   saveGroup: function(groupData, userId) {
     return axios.post("/api/groups", { groupData, userId});
   },
+  updateGroup: function(groupId, userId) {
+    console.log(groupId);
+    console.log(userId);
+    return axios.put("/api/groups" + groupId, { groupId, userId});
+  },
 
 
   // Gets all users

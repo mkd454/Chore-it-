@@ -12,15 +12,10 @@ import PostsList from "../pages/PostsList"; /////////////REMEMBER TO CHANGE
 import Nav from "../components/navbar";
 import TasksList from "../components/taskslist";
 import GroupsList from '../components/groupslist';
+import DeleteButton from "../components/deleteButton";
 
 import "./dashboard.css";
 import API from "../utils/API/API";
-
-deleteTask = id => {
-  API.deleteTask(id)
-    .then(res => this.getUserData())
-    .catch(err => console.log(err));
-};
 
 class DashboardPage extends Component {
   state = {
@@ -44,6 +39,13 @@ class DashboardPage extends Component {
       .catch(err => console.log(err));
   }
 
+  taskFailed = id => {
+    console.log("This Function Ran!");
+    API.deleteTask(id)
+      .then(res => this.getUserData())
+      .catch(err => console.log(err));
+  };
+
   renderUserContent = (user) => {
     return (
       <div className="dashboard-flex">
@@ -51,7 +53,7 @@ class DashboardPage extends Component {
           <Profile user={user}/>        
           <Nav changeTab={this.changeTab}/>
           {this.state.activeTab === "tasks"
-          ? <TasksList tasks={this.state.tasks} userId={user.id}></TasksList>
+          ? <TasksList tasks={this.state.tasks} userId={user.id}><DeleteButton tasks={this.state.tasks}></DeleteButton></TasksList>
           : <GroupsList groups={this.state.groups} userId={user.id}></GroupsList>}
           <Logout />
         </div>

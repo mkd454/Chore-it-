@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API/API';
 
 const btnStyle = {
   float: "right",
@@ -17,6 +18,8 @@ class TaskItem extends Component {
     amount: this.props.amount
   }
 
+
+
   render() {
     return (
       <div>
@@ -24,8 +27,8 @@ class TaskItem extends Component {
         {this.state.name}
         <row>
           <span className="badge badge-primary badge-pill" style={amountStyle}>  ${this.state.amount}  </span>
-          <button type="button" {...props} className="btn btn-success" style={btnStyle}>✔</button>
-          <button type="button" {...props} className="btn btn-danger" style={btnStyle}>✘</button>
+          <button type="button" className="btn btn-success" style={btnStyle}>✔</button>
+          <button type="button" className="btn btn-danger" style={btnStyle}>✘</button>
         </row> 
       </li>
       

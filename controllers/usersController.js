@@ -45,3 +45,31 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   }
 };
+
+  // Create Task, automatically put into the Groups Tab as unassigned.
+
+// create: function (req, res) {
+//   console.log("Creating Task...")
+//   const taskDetails = {
+//       taskName: req.body.name,
+//       amount: req.body.value
+//   }
+//   db.Tasks
+//       .create(taskDetails)
+//       .then(dbModel => {
+//           return db.Users.findOne({ authId: req.body.userId })
+//               .then(dbUser => {
+//                   console.log(dbUser.inGroup);
+//                   console.log(dbModel._id);
+//                   return db.Group.findOneAndUpdate(
+//                   {_id: dbUser.inGroup}
+//                   ,
+//                   {$push: { tasks: dbModel._id }
+//                   },
+//                   {new: true})
+//               })
+
+//       })
+//       .then(dbGroup => res.json(dbGroup))
+//       .catch(err => res.status(422).json(err));
+// },

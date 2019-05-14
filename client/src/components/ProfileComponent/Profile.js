@@ -26,7 +26,7 @@ class Profile extends React.Component {
           </div>
           <div className="col-md-4 text-center">
             <h5>Balance: </h5>
-            <p id="user-balance">${this.props.balance}</p>
+            <span id="user-balance">${this.props.balance}&nbsp;&nbsp;<button onClick={() => this.props.updateBalance(this.props.balance)}>Paid!</button></span>
           </div>
           <div className="col-md-4 d-flex justify-content-end">
             <Logout />

@@ -28,8 +28,7 @@ class GroupItem extends Component {
           <li className="list-group-item d-flex justify-content-between align-items-center">
             {this.state.name}
             <div className="badge-container">
-              <span className="badge badge-danger">✘</span>
-              <span className="badge badge-success">✔</span>
+              <span className="badge badge-danger" onClick={()=> this.props.leaveGroup(this.props.userId, this.state.id)}> ✘ </span>
             </div>
           </li>
         </div>

@@ -70,7 +70,7 @@
      return (
        <div className="dashboard-flex">
          <div className="container dashboard-container">
-           <Profile user={this.props.user} balance={this.state.userBalance} groupId={this.state.groupId}/>    
+           <Profile user={this.props.user} balance={this.state.userBalance} groupId={this.state.groupId} updateBalance={this.updateBalance}/>    
            <Nav changeTab={this.changeTab}/>
            {this.state.activeTab === "tasks"
            ? <TasksList tasks={this.state.tasks} userId={this.props.user.id} updateBalance={this.updateBalance}></TasksList>

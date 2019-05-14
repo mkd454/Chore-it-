@@ -22,4 +22,7 @@ router
   .route("/except/:id")
   .get(groupsController.findAllExcept);
 
+router
+  .route("/:userId/leaveGroup")
+  .put(groupsController.leaveGroup);
 module.exports = router;

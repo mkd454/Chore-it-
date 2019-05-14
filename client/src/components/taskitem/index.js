@@ -17,13 +17,13 @@ class TaskItem extends Component {
           {this.state.name}
           <div className="badge-container">
             <span className="badge badge-primary badge-pill">  ${this.state.amount}  </span>
-            <span className="badge badge-danger" onClick={() => this.props.taskIncomplete(this.state.id, this.state.amount)}>✘</span>
-            <span className="badge badge-success" onClick={() => this.props.taskFinished(this.state.id)}>✔</span>
+            <span className="badge badge-danger" onClick={() => this.props.taskIncomplete(this.state.id, this.state.amount)}>✘ Didn't Complete</span>
+            <span className="badge badge-success" onClick={() => this.props.taskFinished(this.state.id)}>✔ Completed!</span>
           </div>
         </li>
       </div>
     )
   }
 }
-
+  
 export default TaskItem;

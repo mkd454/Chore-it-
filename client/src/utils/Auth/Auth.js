@@ -4,12 +4,14 @@ import API from "../API/API";
 import {AUTH_CONFIG} from "./auth0-variables";
 import {AuthProvider} from "./authContext";
 
+const origin = window.location.origin;
 const auth = new auth0.WebAuth({
-  domain: AUTH_CONFIG.domain,
-  clientID: AUTH_CONFIG.clientId,
-  redirectUri: AUTH_CONFIG.callbackUrl,
+  domain: "dev-mkd.auth0.com",
+  clientID: "tKZejQGRDg6LVpi65jHYg7K9yZh67Adv",
+  redirectUri: origin + "/callback",
   audience: "https://dev-mkd.auth0.com/userinfo",
-  responseType: "token id_token"
+  responseType: "token id_token",
+  scope: "openid profile"
 });
 
 class Auth extends Component {
@@ -48,6 +50,7 @@ class Auth extends Component {
   };
 
   setSession(data) {
+    let accessToken,  idToken, expiresAt;
     const user = {
       id: data.sub,
       name: data.name,
@@ -59,6 +62,11 @@ class Auth extends Component {
       accessToken: data.accessToken,
       user
     });
+
+    localStorage.setItem('access_token', data.accessToken);
+    localStorage.setItem('id_token', data.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+
     API.saveUser({
       authId: data.sub,
       name: data.name

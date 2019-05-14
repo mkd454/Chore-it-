@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the groupsController
 module.exports = {
   findAll: function(req, res) {
+    console.log("Is this hitting?");
     db.Group
       .find(req.query)
       .sort({ date: -1 })
@@ -12,6 +13,7 @@ module.exports = {
   findById: function(req, res) {
     db.Group
       .findById(req.params.id)
+      .populate("Users")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -34,10 +36,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Group
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log(req.params);
+    // db.Group
+    //   .findOneAndUpdate({ _id: req.params.groupId }, req.body)
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
     db.Group

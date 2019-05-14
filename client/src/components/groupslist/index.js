@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import API from "../../utils/API/API";
 
 import GroupCard from '../taskitem';
 
@@ -10,8 +12,12 @@ class GroupsList extends Component {
   }
 
   componentWillMount() {
-    // let groups = Groups.filter(obj => {
-    //   return obj.userId == this.props.userId;
+    API.getGroups().then(res  => console.log(res.data));
+    console.log("Is this here?");
+    // console.log(groups);
+    // .filter(obj => {
+    //   console.log(obj);
+      // return obj.userId == this.props.userId;
     // });
 
     // this.setState({
@@ -24,8 +30,12 @@ class GroupsList extends Component {
       return (
         <div className="button-container">
           <h3>You are not part of any groups.</h3>
-          <button type="button" className="btn btn-primary btn-lg">Create Group</button>
-          <button type="button" className="btn btn-primary btn-lg">Join Group</button>
+          <Link className="buttonLink" to="/group/create">
+            <button type="button" className="btn btn-primary btn-lg">Create Group</button>
+          </Link>
+          <Link className="buttonLink" to="/group/join">
+            <button type="button" className="btn btn-primary btn-lg">Join Group</button>
+          </Link>
         </div>
       );
     } else {

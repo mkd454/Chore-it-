@@ -36,13 +36,21 @@
      });
    }
  
+   updateBalance = amount => {
+     let newBalance = this.state.userBalance - amount;
+
+     this.setState({
+       userBalance: newBalance
+     });
+   }
+   
    getUserData = userId => {
      API.getUser(userId)
        .then(res => {
          console.log(res.data)
          this.setState({
          groupId: res.data[0].inGroup,
-         userBalance: res.data[0].balance
+         userBalance: res.data[0].__v
        })})
        .catch(err => console.log(err));
    }
@@ -67,7 +75,7 @@
            <Profile user={this.props.user} balance={this.state.userBalance} groupId={this.state.groupId}/>        
            <Nav changeTab={this.changeTab}/>
            {this.state.activeTab === "tasks"
-           ? <TasksList tasks={this.state.tasks} userId={this.props.user.id}><DeleteButton tasks={this.state.tasks}></DeleteButton></TasksList>
+           ? <TasksList tasks={this.state.tasks} userId={this.props.user.id} updateBalance={this.updateBalance}></TasksList>
            : <GroupsList groups={this.state.groups} userId={this.props.user.id}></GroupsList>}
            <Logout />
          </div>

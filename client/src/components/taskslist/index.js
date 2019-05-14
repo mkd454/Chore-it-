@@ -11,23 +11,31 @@ class TasksList extends Component {
     taskForm: false,
     taskName: '',
     taskValue: '',
-    userId: this.props.userId
+    userId: this.props.userId,
+    needUpdate: false
   }
 
   componentWillMount() {
     API.getUserTasks(this.state.userId)
       .then(res => this.setState({
-        tasks: res.data
+        tasks: res.data,
+        needUpdate: false
       }))
       .catch(err => console.log(err));
   }
 
   componentDidUpdate() {
-    API.getUserTasks(this.state.userId)
-      .then(res => this.setState({
-        tasks: res.data
-      }))
-      .catch(err => console.log(err));
+    console.log('update');
+    if (this.state.needUpdate) {
+      API.getUserTasks(this.state.userId)
+        .then(res => {console.log(res);this.setState({
+          tasks: res.data,
+          needUpdate: false
+        })})
+        .catch(err => console.log(err));
+    } else {
+      return;
+    }
   }
 
   handleInputChange = event => {
@@ -39,31 +47,36 @@ class TasksList extends Component {
     });
   }
 
-  taskFinished = id => {
+  taskFinished = (id) => {
     API.deleteTask(id)
       .then(res => API.getUserTasks(this.state.userId)
-        .then(res => {
-          console.log(res);
-          this.setState({
-          tasks: res.data
-        })}))
-        .catch (err => console.error(err));
-  }
+      .then(res => {
+        console.log(res);
+        this.setState({
+        tasks: res.data,
 
-  taskIncomplete = id => {
+      })}))
+      .catch (err => console.error(err));
+        
+  }
+      
+  taskIncomplete = (id, amount) => {
     API.deleteTask(id)
-      .then(res => API.getUserTasks(this.state.userId)
-        .then(res => {
-          console.log(res);
-          this.setState({
-          tasks: res.data
-        })}))
-        .catch (err => console.error(err));
+    .then(res => API.getUserTasks(this.state.userId)
+    .then(res => {
+      console.log(res);
+      this.setState({
+        tasks: res.data
+      })}))
+      .catch (err => console.error(err));
+
+      this.props.updateBalance(amount);
   }
 
   addTaskForm = (boolean) => {
     this.setState({
-      taskForm: boolean
+      taskForm: boolean,
+      needUpdate: true
     });
   }
 
@@ -76,12 +89,13 @@ class TasksList extends Component {
       userId: this.state.userId
     }
     API.saveTask(taskData)
-      .then(res => console.log(res))
+      .then(res => {
+        this.setState({
+          needUpdate: true,
+          taskForm: false
+        }); 
+      })
       .catch(err => console.error(err));
-
-    this.setState({
-      taskForm: false
-    }); 
   }
 
   renderContent = () => {

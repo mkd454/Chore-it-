@@ -11,41 +11,50 @@ class GroupsList extends Component {
     groups: [],
     groupForm: 'list',
     groupName: '',
-    userId: this.props.userId,
-    allGroups: []
+    allGroups: [],
+    needUpdate: false,
   }
 
   componentWillMount() {
-    API.getUserGroups(this.state.userId)
+    API.getUserGroups(this.props.userId)
       .then(res => {console.log(res.data);this.setState({
-        groups: res.data
+        groups: res.data,
+        needUpdate: false
       })})
       .catch(err => console.log(err));
 
-    API.getGroupsExcept(this.state.userId)
+    API.getGroupsExcept(this.props.userId)
       .then(res => this.setState({
-        allGroups: res.data
+        allGroups: res.data,
+        needUpdate: false
       }))
       .catch(err => console.log(err));
   }
 
   componentDidUpdate() {
-    API.getUserGroups(this.state.userId)
-      .then(res => this.setState({
-        groups: res.data
-      }))
-      .catch(err => console.log(err));
-    
-    API.getGroupsExcept(this.state.userId)
-      .then(res => this.setState({
-        allGroups: res.data
-      }))
-      .catch(err => console.log(err));
+    if (this.state.needUpdate) {
+      API.getUserGroups(this.props.userId)
+        .then(res => this.setState({
+          groups: res.data,
+          needUpdate: false
+        }))
+        .catch(err => console.log(err));
+      
+      API.getGroupsExcept(this.props.userId)
+        .then(res => this.setState({
+          allGroups: res.data,
+          needUpdate: false
+        }))
+        .catch(err => console.log(err));
+    } else {
+      return;
+    }
   }
 
   groupForm = (formState) => {
     this.setState({
-      groupForm: formState
+      groupForm: formState,
+      needUpdate: true
     });
   }
 
@@ -61,12 +70,13 @@ class GroupsList extends Component {
   handleJoin = (groupId) => {
     const data = {
       groupId: groupId,
-      userId: this.state.userId
+      userId: this.props.userId
     }
 
     API.joinGroup(data)
       .then(res => this.setState({
-        groupForm: 'list'
+        groupForm: 'list',
+        needUpdate: true
       }))
       .catch(err => console.log(err));
   }
@@ -76,16 +86,18 @@ class GroupsList extends Component {
 
     const groupData = {
       groupName: this.state.groupName,
-      userId: this.state.userId
+      userId: this.props.userId
     }
 
     API.saveGroup(groupData)
-      .then(res => console.log(res))
+      .then(res => {
+        this.setState({
+          groupForm: 'list',
+          needUpdate: true
+        });
+      })
       .catch(err => console.log(err));
  
-    this.setState({
-      groupForm: 'list'
-    });
   }
 
   renderContent = () => {

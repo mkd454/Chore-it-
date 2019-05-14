@@ -66,5 +66,9 @@ export default {
     console.log(taskData);
     console.log("Creating Task...")
     return axios.post("/api/tasks", taskData);
+  },
+
+  deleteTask: function(id){
+    return axios.delete("/api/tasks" + id);
   }
 };

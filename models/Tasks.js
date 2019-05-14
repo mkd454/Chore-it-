@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   userId: { type: String, required: true },
   taskName: { type: String, required: true },
-  assigned: { type: Boolean, default: false },
-  assignedTo: { type: Schema.Types.ObjectId, ref: "Users"},
+  groupId: { type: Schema.Types.ObjectId, ref: "Group"},
   amount: {type: Number, required: true },
   date: { type: Date, default: Date.now },
   dueDate: { type: Date }

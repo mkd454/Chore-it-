@@ -7,10 +7,10 @@ router.route("/")
   .post(tasksController.create);
 
 // Matches with "/api/tasks/:id"
-// router.route("/:id")
-//   .get(tasksController.findById)
+router.route("/:id")
+  //.get(tasksController.findById)
   //.put(tasksController.update)
-  //.delete(tasksController.remove);
+  .delete(tasksController.remove);
 
 // Matches with "/api/tasks/users/:id"
 router.route("/users/:id")

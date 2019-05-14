@@ -99,7 +99,9 @@ class TasksList extends Component {
               name={task.taskName}
               amount={task.amount}
             />
+            
           ))}
+          <button type="button" className="btn btn-primary btn-lg" onClick={() => this.addTaskForm(true)}>Add Task</button>
         </ul>
       )
     }

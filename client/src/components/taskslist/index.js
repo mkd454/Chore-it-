@@ -22,7 +22,7 @@ class TasksList extends Component {
       .catch(err => console.log(err));
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     API.getUserTasks(this.state.userId)
       .then(res => this.setState({
         tasks: res.data

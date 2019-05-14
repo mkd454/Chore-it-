@@ -3,9 +3,15 @@ const db = require("../models");
 // Defining methods for the groupsController
 module.exports = {
   findAll: function(req, res) {
-    console.log("Is this hitting?");
     db.Group
-      .find(req.query)
+      .find()
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findAllExcept: function(req, res) {
+    db.Group
+      .find({ users: { $ne: req.params.id }})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -17,20 +23,34 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findUserGroups: function (req, res) {
+    db.Group
+      .find({ users: req.params.id })
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
+    // format group data
+    const groupData = {
+      name: req.body.groupName
+    }
     // first create the group
     db.Group
-      .create(req.body.groupData)
+      .create(groupData)
       .then(dbModel => {
-        console.log(dbModel._id);
         // then update the user's obj to say they're in the newly created group
-        db.Users.findOneAndUpdate({
-          authId: req.body.userId
-        }, {
-          inGroup: dbModel._id
-        }).then(dbUser => {
-          // probably just send back the group id
-          res.json({ dbModel, dbUser })
+        db.Users.findOneAndUpdate(
+          { authId: req.body.userId },
+          { $push: { inGroup: dbModel._id }}
+        ).then (dbUser => {
+          db.Group.findOneAndUpdate(
+            { _id: dbModel._id },
+            { $push: { users: dbUser.authId }}
+          ).then(dbGroup => {
+            // probably just send back the group id
+            res.json({ dbGroup, dbUser })
+          });
         });
       })
       .catch(err => res.status(422).json(err));

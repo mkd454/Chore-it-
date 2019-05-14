@@ -13,4 +13,13 @@ router
   .put(groupsController.update)
   .delete(groupsController.remove);
 
+// Matches with "/api/groups/users/:id"
+router
+  .route("/users/:id")
+  .get(groupsController.findUserGroups);
+
+router
+  .route("/except/:id")
+  .get(groupsController.findAllExcept);
+
 module.exports = router;

@@ -9,8 +9,9 @@
 }
 
 .profileHeader {
-  font-family: roboto;
-  margin-bottom: 32px;
+  font-family: "Helvetica";
+  color:white;
+  font-weight: bold;
 }
 
 .ProfileInformationContainer {
@@ -81,4 +82,16 @@
   color: black;
   border-radius: 15px;
   margin: 15px 0;
+}
+
+.userInfo {
+  padding: 10px;
+  border: solid;
+  border-color: aliceblue;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 0;
 }

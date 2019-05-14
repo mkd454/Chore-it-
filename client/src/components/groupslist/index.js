@@ -6,6 +6,12 @@ import GroupItem from '../groupitem';
 
 import './style.css';
 
+const styles = {
+  smallChange: {
+    paddingTop: 10
+  }
+}
+
 class GroupsList extends Component {
   state = {
     groups: [],
@@ -120,9 +126,11 @@ class GroupsList extends Component {
               join={false}
             />
           ))}
-          <button type="button" className="btn btn-primary btn-lg"
-          onClick={() => this.groupForm('create')}>Create Group</button>
-          <button type="button" className="btn btn-primary btn-lg" onClick={() => this.groupForm('join')}>Join Group</button>
+          <div className="button-container" style={styles.smallChange}>
+            <button type="button" className="btn btn-primary btn-lg"
+            onClick={() => this.groupForm('create')}>Create Group</button>
+            <button type="button" className="btn btn-primary btn-lg" onClick={() => this.groupForm('join')}>Join Group</button>
+          </div>
         </ul>
       )
     } else if (this.state.groupForm === 'create') {
@@ -133,7 +141,7 @@ class GroupsList extends Component {
                 <label>Group Name</label>
                 <input onChange={this.handleInputChange} name="groupName" value={this.state.taskName} type="text" className="form-control" placeholder="Apartment 301"/>
               </div>
-              <div className="form-button-container">
+              <div className="groups-container">
                 <button onClick={this.addGroup} className="btn btn-primary">Submit</button>
                 <button onClick={() => this.groupForm('list')} className="btn btn-primary">Back</button>
               </div>

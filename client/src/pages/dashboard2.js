@@ -1,14 +1,9 @@
  // This has all of the lego dudes
 
  import React, { Component } from "react";
- import { Redirect } from "react-router-dom";
- import Card from "../components/Welcome-Card/index"
- 
  import { AuthConsumer } from "../utils/Auth/authContext";
  import Can from "../utils/Auth/Can";
- import Logout from "../components/authButtons/Logout";
  import Profile from "../components/ProfileComponent/Profile";
- import PostsList from "../pages/PostsList"; /////////////REMEMBER TO CHANGE
  import Nav from "../components/navbar";
  import TasksList from "../components/taskslist";
  import GroupsList from '../components/groupslist';
@@ -69,15 +64,15 @@
 //    }
 
    render () {
+     console.log(this.props.user);
      return (
        <div className="dashboard-flex">
          <div className="container dashboard-container">
-           <Profile user={this.props.user} balance={this.state.userBalance} groupId={this.state.groupId}/>        
+           <Profile user={this.props.user} balance={this.state.userBalance} groupId={this.state.groupId}/>    
            <Nav changeTab={this.changeTab}/>
            {this.state.activeTab === "tasks"
            ? <TasksList tasks={this.state.tasks} userId={this.props.user.id} updateBalance={this.updateBalance}></TasksList>
            : <GroupsList groups={this.state.groups} userId={this.props.user.id}></GroupsList>}
-           <Logout />
          </div>
        </div>
      );

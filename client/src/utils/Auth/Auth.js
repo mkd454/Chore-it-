@@ -51,10 +51,10 @@ class Auth extends Component {
 
   setSession(data) {
     let accessToken,  idToken, expiresAt;
+    console.log(data)
     const user = {
       id: data.sub,
       name: data.name,
-      email: data.email,
       role: data[AUTH_CONFIG.roleUrl]
     };
     this.setState({

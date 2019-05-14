@@ -78,7 +78,8 @@ export default {
     return axios.post("/api/tasks", taskData);
   },
 
-  deleteTask: function(id){
-    return axios.delete("/api/tasks/" + id);
+  deleteTask: function(userId, id){
+    console.log(userId)
+    return axios.delete("/api/tasks/" + id +"/" + userId);
   }
 };

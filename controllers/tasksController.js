@@ -66,9 +66,13 @@ module.exports = {
     },  
 
     remove: function (req, res) {
+        console.log("remove section");
+        console.log(req.params.userId)
+        console.log(req.params.id)
         db.Tasks
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
+            .then(dbModel => db.Users.update({authId : req.params.userId}, {$pull: {tasks: req.params.id }}))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }

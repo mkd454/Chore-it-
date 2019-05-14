@@ -6,14 +6,14 @@ router.route("/")
   //.get(tasksController.findAll)
   .post(tasksController.create);
 
-// Matches with "/api/tasks/:id"
-router.route("/:id")
-//  .get(tasksController.findById)
-  //.put(tasksController.update)
-  .delete(tasksController.remove);
-
 // Matches with "/api/tasks/users/:id"
 router.route("/users/:id")
   .get(tasksController.findUserTasks);
+
+  // Matches with "/api/tasks/:id"
+  router.route("/:id/:userId")
+  //  .get(tasksController.findById)
+    //.put(tasksController.update)
+    .delete(tasksController.remove);
 
 module.exports = router;

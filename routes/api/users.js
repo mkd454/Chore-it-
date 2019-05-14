@@ -17,4 +17,8 @@ router
   .route("/groups/")
   .post(usersController.joinGroup);
 
+router
+  .route("/:id/balance")
+  .put(usersController.updateBalance)
+
 module.exports = router;

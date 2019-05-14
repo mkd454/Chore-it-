@@ -45,7 +45,7 @@
          console.log(res.data)
          this.setState({
          groupId: res.data[0].inGroup,
-         userBalance: res.data[0].__v
+         userBalance: res.data[0].balance
        })})
        .catch(err => console.log(err));
    }

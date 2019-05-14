@@ -160,7 +160,7 @@ class GroupsList extends Component {
               handleJoin={this.handleJoin}
             />
           ))}
-          <button type="button" className="btn btn-primary btn-lg"
+          <button id="backo" type="button" className="btn btn-primary btn-lg"
           onClick={() => this.groupForm('list')}>Back</button>
         </ul>
       )

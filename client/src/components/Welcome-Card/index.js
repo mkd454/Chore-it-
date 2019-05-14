@@ -8,6 +8,7 @@ function Card() {
       <div className="row d-flex justify-content-center">
         <div className=" col-2 col-lg-4 col-md-2"></div>
           <p className="text-center h1 mb-4 mt-4" id="GroupHeader">Chore-It!</p>
+          <p>Wage Chores Not Wars</p>
         <div className="col-2 col-lg-4"></div>
       </div>
       <div className="row">

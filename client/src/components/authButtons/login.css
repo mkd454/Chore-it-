@@ -15,6 +15,9 @@
   color: white;
   font-family: 'Baloo Bhai', cursive;
   font-size: 5rem;
+  border-bottom: white;
+  border-bottom-width: 10px;
+  border-bottom-style: solid;
 }
 
 #flex {
@@ -24,4 +27,21 @@
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(to bottom right, #397be6, #1A3766);
+}
+
+.slogan {
+  color: white;
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 2rem;
+}
+
+#logoutbtn {
+  margin: 0 auto;
+  font-family: 'Helvetica';
+  border-color: transparent;
+  padding: 10px;
+  font-size: 1em;
+  line-height: normal;
+  height: 40px;
+  margin-bottom: 10px;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./profile.css";
 import API from "../../utils/API/API"
 import ProfileContainer from "../ProfileContainer/profilecontainer"
+import Logout from "../authButtons/Logout";
 
 class Profile extends React.Component {
 //   state = {
@@ -18,25 +19,16 @@ class Profile extends React.Component {
   render () {
     return (
       <div>
-        <h2 className="profileHeader">Your Profile</h2>
-        <div className="row">
-          <div className="col-md-4">
-            <h5>Your Unique ID</h5>
-            <p id="user-id">{this.props.user.id}</p>
-          </div>
+        <nav className="profileHeader navbar navbar-expand-lg">
+          <h1 className="profileHeader navbar-brand">Your Profile</h1>
+            <span className="navbar-text">
+              <Logout />
+            </span>
+        </nav>
+        <div className="row userInfo">
           <div className="col-md-4">
             <h5>Username</h5>
             <p id="username">{this.props.user.name}</p>
-          </div>
-          <div className="col-md-4">
-            <h5>Email</h5>
-            <p id="user-email">{this.props.user.email}</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <h5>Group ID:</h5>
-            <p id="user-group-id">{this.props.groupId}</p>
           </div>
           <div className="col-md-4">
             <h5>Balance: </h5>

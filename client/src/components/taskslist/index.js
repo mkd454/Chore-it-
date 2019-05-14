@@ -91,7 +91,7 @@ class TasksList extends Component {
       );
     } else {
       return (
-        <ul class="list-group">
+        <ul className="list-group">
           {this.state.tasks.map(task => (
             <TaskItem
               key={task._id}

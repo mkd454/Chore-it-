@@ -18,8 +18,6 @@ class TaskItem extends Component {
     amount: this.props.amount
   }
 
-
-
   render() {
     return (
       <div>
@@ -27,8 +25,8 @@ class TaskItem extends Component {
         {this.state.name}
         <row>
           <span className="badge badge-primary badge-pill" style={amountStyle}>  ${this.state.amount}  </span>
-          <button type="button" className="btn btn-success" style={btnStyle}>✔</button>
-          <button type="button" className="btn btn-danger" style={btnStyle}>✘</button>
+          <button type="button" className="btn btn-success" onClick={() => this.props.taskFinished(this.state.id)} style={btnStyle}>✔</button>
+          <button type="button" className="btn btn-danger" onClick={() => this.props.taskIncomplete(this.state.id)} style={btnStyle}>✘</button>
         </row> 
       </li>
       

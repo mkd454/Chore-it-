@@ -39,6 +39,28 @@ class TasksList extends Component {
     });
   }
 
+  taskFinished = id => {
+    API.deleteTask(id)
+      .then(res => API.getUserTasks(this.state.userId)
+        .then(res => {
+          console.log(res);
+          this.setState({
+          tasks: res.data
+        })}))
+        .catch (err => console.error(err));
+  }
+
+  taskIncomplete = id => {
+    API.deleteTask(id)
+      .then(res => API.getUserTasks(this.state.userId)
+        .then(res => {
+          console.log(res);
+          this.setState({
+          tasks: res.data
+        })}))
+        .catch (err => console.error(err));
+  }
+
   addTaskForm = (boolean) => {
     this.setState({
       taskForm: boolean
@@ -55,11 +77,11 @@ class TasksList extends Component {
     }
     API.saveTask(taskData)
       .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
 
     this.setState({
       taskForm: false
-    });
+    }); 
   }
 
   renderContent = () => {
@@ -98,6 +120,8 @@ class TasksList extends Component {
               id={task._id}
               name={task.taskName}
               amount={task.amount}
+              taskFinished = {this.taskFinished}
+              taskIncomplete = {this.taskIncomplete}
             />
             
           ))}

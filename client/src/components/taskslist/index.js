@@ -59,9 +59,9 @@ class TasksList extends Component {
         
   }
       
-  taskIncomplete = (id, amount) => {
+  taskIncomplete = (taskId, amount) => {
     console.log(this.state.userId)
-    API.deleteTask(this.state.userId, id)
+    API.deleteTask(this.state.userId, taskId)
     .then(res => API.getUserTasks(this.state.userId)
     .then(res => {
       console.log(res);

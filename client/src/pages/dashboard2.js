@@ -37,11 +37,13 @@
    }
  
    updateBalance = amount => {
-     let newBalance = this.state.userBalance - amount;
-
-     this.setState({
-       userBalance: newBalance
-     });
+    let newBalance = this.state.userBalance - amount;
+    console.log(newBalance)
+    API.updateBalance(this.props.user.id, newBalance)
+      .then(res => {
+        console.log(res.data)
+        this.getUserData(this.props.user.id)
+      })
    }
    
    getUserData = userId => {

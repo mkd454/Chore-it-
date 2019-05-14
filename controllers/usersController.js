@@ -55,8 +55,16 @@ module.exports = {
           { $push: { users: req.body.userId }}
         ).then(dbGroup => res.json(dbGroup));
       });
-
+  },
+  
+  updateBalance: function(req,res){
+    db.Users
+      .findOneAndUpdate(
+        { authId: req.body.userId },
+        { balance: req.body.newBalance}
+      ).then(dbUser => res.json(dbUser));
   }
+
 };
 
   // Create Task, automatically put into the Groups Tab as unassigned.

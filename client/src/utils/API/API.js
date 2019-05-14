@@ -78,8 +78,12 @@ export default {
     return axios.post("/api/tasks", taskData);
   },
 
-  deleteTask: function(userId, id){
-    console.log(userId)
-    return axios.delete("/api/tasks/" + id +"/" + userId);
+  deleteTask: function(userId, taskId){
+    console.log("Delete Task: " + userId)
+    return axios.delete("/api/tasks/" + taskId +"/" + userId);
+  },
+
+  updateBalance: function(userId, newBalance){
+    return axios.put("api/users/"+ userId + "/balance", {userId, newBalance})
   }
 };

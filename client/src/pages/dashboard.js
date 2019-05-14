@@ -2,67 +2,50 @@
 
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Card from "../components/Welcome-Card/index"
 
 import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
-import Logout from "../components/authButtons/Logout";
-import Profile from "../components/ProfileComponent/Profile";
-import PostsList from "../pages/PostsList"; /////////////REMEMBER TO CHANGE
-import Nav from "../components/navbar";
-import TasksList from "../components/taskslist";
-import GroupsList from '../components/groupslist';
-import DeleteButton from "../components/deleteButton";
 
 import "./dashboard.css";
 import API from "../utils/API/API";
+import Dashboard2 from "./dashboard2";
 
 class DashboardPage extends Component {
-  state = {
-    activeTab: "tasks",
-    tasks: [],
-    groups: []
-  }
+//   state = {
+//     activeTab: "tasks",
+//     tasks: [],
+//     groups: [],
+//   }
 
-  changeTab = activeTab => {
-    this.setState({
-      activeTab: activeTab
-    });
-  }
+//   changeTab = activeTab => {
+//     this.setState({
+//       activeTab: activeTab
+//     });
+//   }
 
-  getUserData = userId => {
+//   getUserTasks = userId => {
 
-    API.getUserTasks(userId)
-      .then(res => this.setState({
-        tasks: res.data
-      }))
-      .catch(err => console.log(err));
-  }
+//     API.getUserTasks(userId)
+//       .then(res => this.setState({
+//         tasks: res.data
+//       }))
+//       .catch(err => console.log(err));
+//   }
 
-  taskFailed = id => {
-    console.log("This Function Ran!");
-    API.deleteTask(id)
-      .then(res => this.getUserData())
-      .catch(err => console.log(err));
-  };
+//   taskFailed = id => {
+//     console.log("This Function Ran!");
+//     API.deleteTask(id)
+//       .then(res => this.getUserTasks())
+//       .catch(err => console.log(err));
+//   };
 
   renderUserContent = (user) => {
     return (
-      <div className="dashboard-flex">
-        <div className="container dashboard-container">
-          <Profile user={user}/>        
-          <Nav changeTab={this.changeTab}/>
-          {this.state.activeTab === "tasks"
-          ? <TasksList tasks={this.state.tasks} userId={user.id}><DeleteButton tasks={this.state.tasks}></DeleteButton></TasksList>
-          : <GroupsList groups={this.state.groups} userId={user.id}></GroupsList>}
-          <Logout />
-        </div>
-      </div>
+      <Dashboard2 user={user}/>
     );
-  }
+  } 
 
   render() {
-    console.log(this.state.tasks);
     return (
       <AuthConsumer>
         {({ user }) => (

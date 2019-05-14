@@ -50,6 +50,17 @@ class TasksList extends Component {
         .catch (err => console.error(err));
   }
 
+  taskIncomplete = id => {
+    API.deleteTask(id)
+      .then(res => API.getUserTasks(this.state.userId)
+        .then(res => {
+          console.log(res);
+          this.setState({
+          tasks: res.data
+        })}))
+        .catch (err => console.error(err));
+  }
+
   addTaskForm = (boolean) => {
     this.setState({
       taskForm: boolean
@@ -110,6 +121,7 @@ class TasksList extends Component {
               name={task.taskName}
               amount={task.amount}
               taskFinished = {this.taskFinished}
+              taskIncomplete = {this.taskIncomplete}
             />
             
           ))}

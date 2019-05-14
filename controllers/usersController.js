@@ -43,6 +43,19 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  joinGroup: function(req, res) {
+    db.Users
+      .findOneAndUpdate(
+        { authId: req.body.userId },
+        { $push: { inGroup: req.body.groupId }}
+      ).then(dbModel => {
+        db.Group.findOneAndUpdate(
+          { _id: req.body.groupId },
+          { $push: { users: req.body.userId }}
+        ).then(dbGroup => res.json(dbGroup));
+      });
+
   }
 };
 

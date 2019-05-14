@@ -33,7 +33,13 @@ class CreateGroup extends Component {
       API.saveGroup({
         name: this.state.groupName,
       }, id)
-        .then(res => this.loadGroups())
+        .then(res => 
+          API.updateGroup(res.data.dbModel._id,res.data.dbUser._id)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err)))
+          // API.getGroup(res.data.dbModel._id)
+          //   .then(res => console.log(res.data))
+          //   .catch(err => console.log(err)))
         .catch(err => console.log(err));
     }
   };

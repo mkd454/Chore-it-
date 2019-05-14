@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../utils/API/API';
-
-const btnStyle = {
-  float: "right",
-  marginLeft: "20px"
-}
-
-const amountStyle = {
-  marginRight: "50px"
-}
+import './style.css';
 
 class TaskItem extends Component {
 
@@ -21,16 +13,14 @@ class TaskItem extends Component {
   render() {
     return (
       <div>
-      <li className="list-group-item d-flex justify-content-between align-items-center">
-        {this.state.name}
-        <row>
-          <span className="badge badge-primary badge-pill" style={amountStyle}>  ${this.state.amount}  </span>
-          <button type="button" className="btn btn-success" onClick={() => this.props.taskFinished(this.state.id)} style={btnStyle}>✔</button>
-          <button type="button" className="btn btn-danger" onClick={() => this.props.taskIncomplete(this.state.id)} style={btnStyle}>✘</button>
-        </row> 
-      </li>
-      
-
+        <li className="list-group-item d-flex justify-content-between align-items-center">
+          {this.state.name}
+          <div className="badge-container">
+            <span className="badge badge-primary badge-pill">  ${this.state.amount}  </span>
+            <span className="badge badge-danger" onClick={() => this.props.taskIncomplete(this.state.id, this.state.amount)}>✘</span>
+            <span className="badge badge-success" onClick={() => this.props.taskFinished(this.state.id)}>✔</span>
+          </div>
+        </li>
       </div>
     )
   }

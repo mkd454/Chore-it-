@@ -139,7 +139,7 @@ class TasksList extends Component {
             />
             
           ))}
-          <button type="button" className="btn btn-primary btn-lg" onClick={() => this.addTaskForm(true)}>Add Task</button>
+          <button type="button" id="addTask" className="btn btn-primary btn-lg" onClick={() => this.addTaskForm(true)}>Add Task</button>
         </ul>
       )
     }

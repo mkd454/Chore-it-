@@ -57,6 +57,20 @@ class GroupsList extends Component {
     }
   }
 
+  leaveGroup = (userId, groupId) => {
+    console.log("LeaveGroup UID" + userId)
+    console.log("LeaveGroup GID" + groupId)
+    API.leaveGroup(userId, groupId)
+      .then(res => API.getUserGroups(this.props.userId)
+      .then(res => {
+        console.log("leave group res:" + res.data)
+        this.setState({
+          groups: res.data
+        })}))
+      .catch (err => console.error(err));
+  }
+  
+
   groupForm = (formState) => {
     this.setState({
       groupForm: formState,
@@ -124,6 +138,8 @@ class GroupsList extends Component {
               id={group._id}
               name={group.name}
               join={false}
+              userId = {this.props.userId}
+              leaveGroup={this.leaveGroup}
             />
           ))}
           <div className="button-container" style={styles.smallChange}>
@@ -158,6 +174,7 @@ class GroupsList extends Component {
               name={group.name}
               join={true}
               handleJoin={this.handleJoin}
+              userId = {this.props.userId}
             />
           ))}
           <button id="backo" type="button" className="btn btn-primary btn-lg"

@@ -29,6 +29,9 @@ export default {
     return axios.put("/api/groups" + groupId, { groupId, userId});
   },
 
+  leaveGroup: function(userId, groupId){
+    return axios.put("/api/groups/"+ userId + "/leaveGroup", {userId, groupId})
+  },
 
   // Gets all users
   getUsers: function() {

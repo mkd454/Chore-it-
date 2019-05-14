@@ -68,5 +68,14 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  leaveGroup: function(req, res){
+    console.log("Leave Group body: " + req.body.groupId + req.body.userId);
+    db.Group
+      .update({_id: req.body.groupId}, {$pull: {users: req.body.userId}})
+      .then(dbModel => db.Users.update({ authId: req.body.userId }, {$pull:{groups: req.body.groupId}}))
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

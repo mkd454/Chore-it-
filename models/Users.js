@@ -16,7 +16,7 @@ const userSchema = new Schema({
             default: null
     },
 
-    balance: { type: Number, default: 0, required: true}
+    balance: { type: Number, default: 0.00, required: true}
 });
 
 const Users = mongoose.model("Users", userSchema);

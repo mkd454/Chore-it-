@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import API from '../../utils/API/API';
 import './style.css';
 
 class GroupItem extends Component {
@@ -37,7 +36,7 @@ class GroupItem extends Component {
           <li onClick={() => this.props.handleClick(this.state.id)} className="list-group-item d-flex justify-content-between align-items-center">
             {this.state.name}
             <div className="badge-container">
-              <span className="badge badge-danger" onClick={()=> this.props.leaveGroup(this.props.userId, this.state.id)}> ✘ </span>
+              <span className="badge badge-danger" onClick={()=> this.props.leaveGroup(this.props.userId, this.state.id)}> ✘ Leave Group </span>
             </div>
           </li>
         </div>

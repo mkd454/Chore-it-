@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import posed from 'react-pose';
 import { AuthConsumer } from "../../utils/Auth/authContext";
 

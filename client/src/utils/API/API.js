@@ -24,8 +24,6 @@ export default {
     return axios.post("/api/groups", groupData);
   },
   updateGroup: function(groupId, userId) {
-    console.log(groupId);
-    console.log(userId);
     return axios.put("/api/groups" + groupId, { groupId, userId});
   },
 
@@ -34,7 +32,6 @@ export default {
   },
 
   pullRoommatesCall: function(groupId) {
-    console.log("For grabbing group roommates: "+groupId);
     return axios.get("/api/groups/"+ groupId + "/roommates", {groupId})
   },
 
@@ -44,15 +41,10 @@ export default {
   },
   // Gets the user with the given id
   getUser: function(id) {
-    console.log("Function running on profile page")
-    console.log(id);
     return axios.get("/api/users/" + id);
   },
   // Finds user by authId & changes their group
   changeUsersGroup: function( groupid, userid) {
-    console.log("Changing user's group")
-    console.log(groupid);
-    console.log(userid);
     return axios.put("/api/users/" + userid, {groupid,userid});
   },
   joinGroup: function ( data ) {
@@ -64,8 +56,6 @@ export default {
   },
   // Saves a user to the database
   saveUser: function(userData) {
-    console.log("On my way to creating a new user! (run when user logs in)")
-    console.log(userData);
     if (userData)
     return axios.post("/api/users", userData);
   },
@@ -81,13 +71,10 @@ export default {
   },
 
   saveTask: function(taskData){
-    console.log(taskData);
-      console.log("Creating Task...")
     return axios.post("/api/tasks", taskData);
   },
 
   deleteTask: function(userId, taskId){
-    console.log("Delete Task: " + userId)
     return axios.delete("/api/tasks/" + taskId +"/" + userId);
   },
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API/API";
 import GroupItem from '../groupitem';
+import TaskList from '../taskslist';
 
 import './style.css';
 
@@ -58,8 +59,6 @@ class GroupsList extends Component {
   }
 
   leaveGroup = (userId, groupId) => {
-    console.log("LeaveGroup UID" + userId)
-    console.log("LeaveGroup GID" + groupId)
     API.leaveGroup(userId, groupId)
       .then(res => API.getUserGroups(this.props.userId)
       .then(res => {
@@ -198,12 +197,14 @@ class GroupsList extends Component {
       return (
         <ul className="list-group">
           {this.state.roommates.map(user => (
-            <GroupItem
-              key={"user-" + user._id}
-              id={user._id}
-              name={user.name}
-              roommate={true}
-            />
+            <div>
+              <GroupItem
+                key={"user-" + user._id}
+                id={user._id}
+                name={user.name}
+                roommate={true}
+              />
+            </div>  
           ))}
           <button id="backo" type="button" className="btn btn-primary btn-lg"
           onClick={() => this.groupForm('list')}>Back</button>

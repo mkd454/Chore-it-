@@ -1,7 +1,5 @@
 import React from "react";
 import "./profile.css";
-import API from "../../utils/API/API"
-import ProfileContainer from "../ProfileContainer/profilecontainer"
 import Logout from "../authButtons/Logout";
 
 const styles = {

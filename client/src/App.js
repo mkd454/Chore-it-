@@ -7,7 +7,6 @@ import RoommateDetails from "./pages/RoommateDetails";
 import Auth from "./utils/Auth/Auth";
 import CreateGroup from "./pages/createGroup"
 import JoinGroup from "./pages/joinGroup"
-import InGroup from "./pages/inGroup"
 import AddTask from "./pages/addTask"
 
 class App extends React.Component {

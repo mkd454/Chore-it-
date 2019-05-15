@@ -29,10 +29,10 @@ class Nav extends Component {
     return (
       <ul className="nav nav-tabs nav-justified">
         <li className="nav-item">
-          <a className={"nav-link " + this.checkActiveTab('tasks')} onClick={()=>this.changeTab('tasks')}>Your Tasks</a>
+          <span className={"nav-link " + this.checkActiveTab('tasks')} onClick={()=>this.changeTab('tasks')}>Your Tasks</span>
         </li>
         <li className="nav-item">
-          <a className={"nav-link " + this.checkActiveTab('groups')} onClick={()=>this.changeTab('groups')}>Your Groups</a>
+          <span className={"nav-link " + this.checkActiveTab('groups')} onClick={()=>this.changeTab('groups')}>Your Groups</span>
         </li>
       </ul>
     )

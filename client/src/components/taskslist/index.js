@@ -25,10 +25,9 @@ class TasksList extends Component {
   }
 
   componentDidUpdate() {
-    console.log('update');
     if (this.state.needUpdate) {
       API.getUserTasks(this.state.userId)
-        .then(res => {console.log(res);this.setState({
+        .then(res => {this.setState({
           tasks: res.data,
           needUpdate: false
         })})
@@ -51,7 +50,6 @@ class TasksList extends Component {
     API.deleteTask(this.state.userId, id)
       .then(res => API.getUserTasks(this.state.userId)
       .then(res => {
-        console.log(res);
         this.setState({
         tasks: res.data,
       })}))
@@ -60,11 +58,9 @@ class TasksList extends Component {
   }
       
   taskIncomplete = (taskId, amount) => {
-    console.log(this.state.userId)
     API.deleteTask(this.state.userId, taskId)
     .then(res => API.getUserTasks(this.state.userId)
     .then(res => {
-      console.log(res);
       this.setState({
         tasks: res.data
       })}))

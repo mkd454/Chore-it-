@@ -7,7 +7,6 @@ import { AuthConsumer } from "../utils/Auth/authContext";
 import Can from "../utils/Auth/Can";
 
 import "./dashboard.css";
-import API from "../utils/API/API";
 import Dashboard2 from "./dashboard2";
 
 class DashboardPage extends Component {

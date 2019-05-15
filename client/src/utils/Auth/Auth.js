@@ -50,8 +50,7 @@ class Auth extends Component {
   };
 
   setSession(data) {
-    let accessToken,  idToken, expiresAt;
-    console.log(data)
+    let expiresAt;
     const user = {
       id: data.sub,
       name: data.name,

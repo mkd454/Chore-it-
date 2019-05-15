@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import API from '../../utils/API/API';
 import './style.css';
 
 class TaskItem extends Component {
@@ -10,6 +9,8 @@ class TaskItem extends Component {
     amount: this.props.amount
   }
 
+
+
   render() {
     return (
       <div>
@@ -17,7 +18,7 @@ class TaskItem extends Component {
           {this.state.name}
           <div className="badge-container">
             <span className="badge badge-primary badge-pill">  ${this.state.amount}  </span>
-            <span className="badge badge-danger" onClick={() => this.props.taskIncomplete(this.state.id, this.state.amount)}>✘ Didn't Complete</span>
+            <span className="badge badge-danger" onClick={() => this.props.taskIncomplete(this.props.id, this.props.amount)}>✘ Didn't Complete</span> 
             <span className="badge badge-success" onClick={() => this.props.taskFinished(this.state.id)}>✔ Completed!</span>
           </div>
         </li>
@@ -27,3 +28,4 @@ class TaskItem extends Component {
 }
   
 export default TaskItem;
+

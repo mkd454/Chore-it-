@@ -1,5 +1,4 @@
 import React from "react";
-import { AuthConsumer } from "../../utils/Auth/authContext";
 import LoginButton from "./LoginButton"
 import "./login.css";
 

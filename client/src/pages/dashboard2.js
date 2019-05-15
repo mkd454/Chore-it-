@@ -1,13 +1,11 @@
  // This has all of the lego dudes
 
  import React, { Component } from "react";
- import { AuthConsumer } from "../utils/Auth/authContext";
- import Can from "../utils/Auth/Can";
  import Profile from "../components/ProfileComponent/Profile";
  import Nav from "../components/navbar";
  import TasksList from "../components/taskslist";
  import GroupsList from '../components/groupslist';
- import DeleteButton from "../components/deleteButton";
+
  
  import "./dashboard.css";
  import API from "../utils/API/API";
@@ -33,10 +31,8 @@
  
    updateBalance = amount => {
     let newBalance = this.state.userBalance - amount;
-    console.log(newBalance)
     API.updateBalance(this.props.user.id, newBalance)
       .then(res => {
-        console.log(res.data)
         this.getUserData(this.props.user.id)
       })
    }
@@ -44,7 +40,6 @@
    getUserData = userId => {
      API.getUser(userId)
        .then(res => {
-         console.log(res.data)
          this.setState({
          groupId: res.data[0].inGroup,
          userBalance: res.data[0].balance
@@ -66,7 +61,6 @@
 //    }
 
    render () {
-     console.log(this.props.user);
      return (
        <div className="dashboard-flex">
          <div className="container dashboard-container">
@@ -74,7 +68,7 @@
            <Nav changeTab={this.changeTab}/>
            {this.state.activeTab === "tasks"
            ? <TasksList tasks={this.state.tasks} userId={this.props.user.id} updateBalance={this.updateBalance}></TasksList>
-           : <GroupsList groups={this.state.groups} userId={this.props.user.id}></GroupsList>}
+           : <GroupsList groups={this.state.groups} tasks={this.state.tasks} userId={this.props.user.id} updateBalance={this.updateBalance}></GroupsList>}
          </div>
        </div>
      );

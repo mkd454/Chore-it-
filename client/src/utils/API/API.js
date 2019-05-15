@@ -29,8 +29,13 @@ export default {
     return axios.put("/api/groups" + groupId, { groupId, userId});
   },
 
-  leaveGroup: function(userId, groupId){
+  leaveGroup: function(userId, groupId) {
     return axios.put("/api/groups/"+ userId + "/leaveGroup", {userId, groupId})
+  },
+
+  pullRoommatesCall: function(groupId) {
+    console.log("For grabbing group roommates: "+groupId);
+    return axios.get("/api/groups/"+ groupId + "/roommates", {groupId})
   },
 
   // Gets all users

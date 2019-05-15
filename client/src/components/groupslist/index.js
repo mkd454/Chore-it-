@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import API from "../../utils/API/API";
-
 import GroupItem from '../groupitem';
 
 import './style.css';
@@ -19,11 +17,13 @@ class GroupsList extends Component {
     groupName: '',
     allGroups: [],
     needUpdate: false,
+    roommatesIds: [],
+    roommates: []
   }
 
   componentWillMount() {
     API.getUserGroups(this.props.userId)
-      .then(res => {console.log(res.data);this.setState({
+      .then(res => {this.setState({
         groups: res.data,
         needUpdate: false
       })})
@@ -117,7 +117,19 @@ class GroupsList extends Component {
         });
       })
       .catch(err => console.log(err));
- 
+  }
+
+  pullRoommates = (groupId) => {
+    console.log("pulling roommates?" + groupId);
+    API.pullRoommatesCall(groupId)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          roommates: res.data,
+          groupForm: 'roommates'
+        }) 
+      })
+      .catch(err => console.log(err));
   }
 
   renderContent = () => {
@@ -140,6 +152,7 @@ class GroupsList extends Component {
               join={false}
               userId = {this.props.userId}
               leaveGroup={this.leaveGroup}
+              handleClick={this.pullRoommates}
             />
           ))}
           <div className="button-container" style={styles.smallChange}>
@@ -175,6 +188,21 @@ class GroupsList extends Component {
               join={true}
               handleJoin={this.handleJoin}
               userId = {this.props.userId}
+            />
+          ))}
+          <button id="backo" type="button" className="btn btn-primary btn-lg"
+          onClick={() => this.groupForm('list')}>Back</button>
+        </ul>
+      )
+    } else if (this.state.groupForm === 'roommates') {
+      return (
+        <ul className="list-group">
+          {this.state.roommates.map(user => (
+            <GroupItem
+              key={"user-" + user._id}
+              id={user._id}
+              name={user.name}
+              roommate={true}
             />
           ))}
           <button id="backo" type="button" className="btn btn-primary btn-lg"

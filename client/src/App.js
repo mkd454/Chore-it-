@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import CreateAccount from "./pages/createAccount";
-import SessionDetails from "./pages/sessionDetails";
-import Nav from "./components/navbar";
 import HomePage from './pages/home';
 import DashboardPage from './pages/dashboard';
 import CallbackPage from "./pages/callback";
@@ -26,7 +23,6 @@ class App extends React.Component {
               <Route path="/roommate/:id" component={RoommateDetails} />
               <Route exact path="/group/create" component={CreateGroup} />
               <Route exact path="/group/join" component={JoinGroup} />
-              {/* <Route path="/dashboard/:id" component={InGroup} /> */}
               <Route path="/addtask" component={AddTask} />
             </Switch>
           </Router>

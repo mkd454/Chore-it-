@@ -7,7 +7,8 @@ class GroupItem extends Component {
   state = {
     id: this.props.id,
     name: this.props.name,
-    join: this.props.join
+    join: this.props.join,
+    roommate: this.props.roommate
   }
 
   renderContent = () => {
@@ -22,10 +23,18 @@ class GroupItem extends Component {
           </li>
         </div>
       )
-    } else {
+    } else if (this.state.roommate) {
       return (
         <div>
           <li className="list-group-item d-flex justify-content-between align-items-center">
+            {this.state.name}
+          </li>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <li onClick={() => this.props.handleClick(this.state.id)} className="list-group-item d-flex justify-content-between align-items-center">
             {this.state.name}
             <div className="badge-container">
               <span className="badge badge-danger" onClick={()=> this.props.leaveGroup(this.props.userId, this.state.id)}> ✘ </span>

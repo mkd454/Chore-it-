@@ -77,5 +77,17 @@ module.exports = {
       .then(dbModel => db.Users.update({ authId: req.body.userId }, {$pull:{groups: req.body.groupId}}))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  themRoommatesDoe: function(req, res){
+    console.log("Info to pull roommates from groups: " + req.params.groupId);
+    db.Group
+      .findOne({_id: req.params.groupId})
+      .then(dbModel => {
+        db.Users
+          .find({ "authId": { "$in" : dbModel.users }})
+          .then(dbUsers => res.json(dbUsers))
+          .catch(err => res.status(422).json(err))
+      })
+      .catch(err => res.status(422).json(err));
   }
 };

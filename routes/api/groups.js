@@ -25,4 +25,9 @@ router
 router
   .route("/:userId/leaveGroup")
   .put(groupsController.leaveGroup);
+  
+router
+  .route("/:groupId/roommates")
+  .get(groupsController.themRoommatesDoe);
+
 module.exports = router;

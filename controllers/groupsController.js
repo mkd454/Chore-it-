@@ -56,7 +56,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log(req.params);
     // db.Group
     //   .findOneAndUpdate({ _id: req.params.groupId }, req.body)
     //   .then(dbModel => res.json(dbModel))
@@ -71,7 +70,6 @@ module.exports = {
   },
 
   leaveGroup: function(req, res){
-    console.log("Leave Group body: " + req.body.groupId + req.body.userId);
     db.Group
       .update({_id: req.body.groupId}, {$pull: {users: req.body.userId}})
       .then(dbModel => db.Users.update({ authId: req.body.userId }, {$pull:{groups: req.body.groupId}}))
@@ -79,7 +77,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   themRoommatesDoe: function(req, res){
-    console.log("Info to pull roommates from groups: " + req.params.groupId);
     db.Group
       .findOne({_id: req.params.groupId})
       .then(dbModel => {

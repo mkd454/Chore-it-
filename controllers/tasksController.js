@@ -40,8 +40,6 @@ module.exports = {
         db.Tasks
             .create(taskDetails)
             .then(dbModel => {
-                console.log(dbModel._id);
-                console.log(req.body.userId);
                 db.Users.findOneAndUpdate(
                     { authId: req.body.userId },
                     { $push: { tasks: dbModel._id }},
@@ -66,9 +64,6 @@ module.exports = {
     },  
 
     remove: function (req, res) {
-        console.log("remove section");
-        console.log(req.params.userId)
-        console.log(req.params.id)
         db.Tasks
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())

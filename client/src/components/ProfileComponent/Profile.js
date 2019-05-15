@@ -4,7 +4,8 @@ import Logout from "../authButtons/Logout";
 
 const styles = {
   h1: {
-    paddingBottom: 20
+    paddingBottom: 20,
+    fontFamily: "'Baloo Bhai', cursive"
   }
 }
 

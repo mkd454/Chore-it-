@@ -16,8 +16,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("Creating a new user: ");
-    console.log(req.body)
     const user = {
       authId: req.body.authId,
       name: req.body.name
@@ -28,8 +26,6 @@ module.exports = {
       .catch(err => {console.log(err); res.status(422).json(err)});
   },
   update: function(req, res) {
-    console.log("Changing user's groupId: ");
-    console.log(req.body);
     db.Users
       .findOneAndUpdate({ 
         authId: req.body.userid }, 

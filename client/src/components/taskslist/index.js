@@ -65,7 +65,6 @@ class TasksList extends Component {
         tasks: res.data
       })}))
       .catch (err => console.error(err));
-
       this.props.updateBalance(amount);
   }
 
@@ -133,7 +132,6 @@ class TasksList extends Component {
               taskFinished = {this.taskFinished}
               taskIncomplete = {this.taskIncomplete}
             />
-            
           ))}
           <button type="button" id="addTask" className="btn btn-primary btn-lg" onClick={() => this.addTaskForm(true)}>Add Task</button>
         </ul>
